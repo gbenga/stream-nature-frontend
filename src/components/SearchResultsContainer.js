@@ -14,7 +14,7 @@ export default class EventResultsContainer extends React.Component {
 
   render() {
     return (
-      <div id="search-results-container">
+      <div className="search-results-container">
         {this.renderEventCards(this.props)}
       </div>
     );
