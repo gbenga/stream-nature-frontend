@@ -1,0 +1,32 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "event 1",
+      "time": "02:00",
+      "locationId": 1,
+      "userId": 1
+    },
+    {
+      "id": 1,
+      "name": "event 2",
+      "time": "04:30",
+      "locationId": 1,
+      "userId": 3
+    },
+    {
+      "id": 1,
+      "name": "event 3",
+      "time": "14:15",
+      "locationId": 2,
+      "userId": 2
+    },
+    {
+      "id": 1,
+      "name": "event 4",
+      "time": "20:00",
+      "locationId": 3,
+      "userId": 1
+    }
+  ]
+}
