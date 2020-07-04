@@ -3,13 +3,22 @@ import SearchResultsContainer from "./SearchResultsContainer";
 
 export default class SearchPage extends React.Component {
   state = {
-    // will keep the search term and the events that are rendered as a result
     searchTerm: "",
   };
 
   updateSearchTerm = (e) => {
     console.log(e.target.value);
     this.setState({ searchTerm: e.target.value });
+  };
+
+  filterEvents = (eventsToFilter) => {
+    return eventsToFilter.filter((x) =>
+      x.name.toLowerCase().includes(this.state.searchTerm)
+    );
+  };
+
+  eventsToRender = () => {
+    return this.filterEvents(this.props.events);
   };
 
   render() {
@@ -25,7 +34,7 @@ export default class SearchPage extends React.Component {
           onChange={this.updateSearchTerm}
         ></input>
         <br></br>
-        <SearchResultsContainer events={this.props.events} />
+        <SearchResultsContainer events={this.eventsToRender()} />
       </>
     );
   }
