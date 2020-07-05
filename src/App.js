@@ -9,6 +9,7 @@ export default class App extends Component {
   state = {
     events: [],
     locations: [],
+    // nasaData: {},
   };
 
   componentDidMount() {
@@ -18,10 +19,17 @@ export default class App extends Component {
     API.fetchLocations().then((array) =>
       this.setState({ locations: [...this.state.locations, ...array] })
     );
+    // API.fetchNasaData().then((data) => this.setState({ nasaData: data }));
   }
   render() {
     return (
       <>
+        {/* <div>
+          <h3>{this.state.nasaData.title}</h3>
+          <img src={this.state.nasaData.url} />
+          <p>{this.state.nasaData.date}</p>
+          <h4>{this.state.nasaData.explanation}</h4>
+        </div> */}
         <IndexContainer locations={this.state.locations} />
         <SearchPage events={this.state.events} />
       </>
