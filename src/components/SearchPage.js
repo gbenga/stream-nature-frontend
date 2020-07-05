@@ -7,7 +7,6 @@ export default class SearchPage extends React.Component {
   };
 
   updateSearchTerm = (e) => {
-    console.log(e.target.value);
     this.setState({ searchTerm: e.target.value });
   };
 

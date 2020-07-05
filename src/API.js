@@ -1,4 +1,4 @@
-const eventsURL = "http://localhost:3001/events";
+const eventsURL = "http://localhost:3000/events";
 
 function fetchEvents() {
   return fetch(eventsURL)
