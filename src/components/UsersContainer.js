@@ -32,9 +32,20 @@ class UsersContainer extends Component {
     });
   };
 
+  handleChangeBio = (e) => {
+    this.setState({
+      newUser: { ...this.state.newUser, ...{ bio: e.target.value } },
+    });
+  };
+
+  setLikesToZero = (user) => {
+    user.likes = 0;
+    return user;
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    API.postToUsers(this.state.newUser);
+    API.postToUsers(this.setLikesToZero(this.state.newUser));
   };
 
   render() {
@@ -46,6 +57,8 @@ class UsersContainer extends Component {
           <input className="input" onChange={this.handleChangeName}></input>
           <label className="label">username:</label>
           <input className="input" onChange={this.handleChangeUsername}></input>
+          <label className="label">bio:</label>
+          <input className="input" onChange={this.handleChangeBio}></input>
           <button className="button" type="submit">
             Submit new User
           </button>

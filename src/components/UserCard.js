@@ -6,6 +6,7 @@ class UserCard extends Component {
       <div className="user-card">
         <img className="user-img" src={this.props.user.avatar} />
         <p> @{this.props.user.username} </p>
+        {/* <button>Edit User</button> */}
       </div>
     );
   }
