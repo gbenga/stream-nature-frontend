@@ -17,5 +17,16 @@ function fetchLocations() {
     .then((resp) => resp.json())
     .catch((error) => alert("fetching locations from API didn't work"));
 }
+function postToUsers(userObj) {
+  const configObject = {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(userObj),
+  };
 
-export default { fetchEvents, fetchLocations, fetchUsers };
+  fetch(usersURL, configObject)
+    .then((resp) => resp.json())
+    .then((object) => console.log(object))
+    .catch((error) => alert("Creating a new user didn't work"));
+}
+export default { fetchEvents, fetchLocations, fetchUsers, postToUsers };

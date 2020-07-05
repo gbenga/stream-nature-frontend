@@ -3,10 +3,10 @@ import UserCard from "./UserCard";
 import API from "../API.js";
 
 class UsersContainer extends Component {
-  constructor() {
-    super();
-    this.state = { usersArray: [] };
-  }
+  state = {
+    usersArray: [],
+    newUser: {},
+  };
 
   componentDidMount() {
     API.fetchUsers().then((jsonData) => {
@@ -14,17 +14,43 @@ class UsersContainer extends Component {
     });
   }
 
-  renderUserCard = () => {
+  renderUserCards = () => {
     return this.state.usersArray.map((user, index) => (
       <UserCard key={index} user={user} />
     ));
+  };
+
+  handleChangeName = (e) => {
+    this.setState({
+      newUser: { ...this.state.newUser, ...{ name: e.target.value } },
+    });
+  };
+
+  handleChangeUsername = (e) => {
+    this.setState({
+      newUser: { ...this.state.newUser, ...{ username: e.target.value } },
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    API.postToUsers(this.state.newUser);
   };
 
   render() {
     return (
       <div className="users-container">
         <h4> This is the UsersContainer </h4>
-        {this.renderUserCard()}
+        <form className="new-user-form" onSubmit={this.handleSubmit}>
+          <label className="label">First Name:</label>
+          <input className="input" onChange={this.handleChangeName}></input>
+          <label className="label">username:</label>
+          <input className="input" onChange={this.handleChangeUsername}></input>
+          <button className="button" type="submit">
+            Submit new User
+          </button>
+        </form>
+        {this.renderUserCards()}
       </div>
     );
   }

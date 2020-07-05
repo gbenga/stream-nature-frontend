@@ -7,6 +7,8 @@ export default class IndexContainer extends React.Component {
     return (
       <div className="index-container">
         this is the Index Container
+        <br></br>
+        <button>open the search page</button>
         <LocationsContainer locations={this.props.locations} />
         <UsersContainer />
       </div>
