@@ -33,24 +33,28 @@
     {
       "id": 1,
       "username": "gbenga",
+      "avatar": "https://www.out.com/sites/out.com/files/styles/vertical_gallery_desktop_1x/public/hbomax_020620_legend_zd_00383.jpg?itok=6kuTao9J&timestamp=1589587361",
       "bio": "that guy",
       "likes": 0
     },
     {
       "id": 2,
       "username": "dorothy",
+      "avatar": "https://vignette.wikia.nocookie.net/p__/images/9/9f/Lana_kane.jpg/revision/latest/scale-to-width-down/340?cb=20130325021411&path-prefix=protagonist",
       "bio": "that girl",
       "likes": 2
     },
     {
       "id": 3,
       "username": "dan",
+      "avatar": "",
       "bio": "Check this out guys!",
       "likes": 0
     },
     {
       "id": 4,
       "username": "anderson",
+      "avatar": "",
       "bio": "no longer that guy",
       "likes": 3
     }
