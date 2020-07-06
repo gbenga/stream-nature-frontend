@@ -4,18 +4,11 @@ import API from "../API.js";
 
 class UsersContainer extends Component {
   state = {
-    usersArray: [],
     newUser: {},
   };
 
-  componentDidMount() {
-    API.fetchUsers().then((jsonData) => {
-      this.setState({ usersArray: jsonData });
-    });
-  }
-
   renderUserCards = () => {
-    return this.state.usersArray.map((user, index) => (
+    return this.props.users.map((user, index) => (
       <UserCard key={index} user={user} />
     ));
   };

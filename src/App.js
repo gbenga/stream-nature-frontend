@@ -4,11 +4,14 @@ import "./App.css";
 import API from "./API";
 import SearchPage from "./components/SearchPage";
 import IndexContainer from "./components/IndexContainer";
+import UserShowContainer from "./components/UserShowContainer";
+import LocationShowContainer from "./components/LocationShowContainer";
 
 export default class App extends Component {
   state = {
     events: [],
     locations: [],
+    users: [],
     // nasaData: {},
   };
 
@@ -19,6 +22,9 @@ export default class App extends Component {
     API.fetchLocations().then((array) =>
       this.setState({ locations: [...this.state.locations, ...array] })
     );
+    API.fetchUsers().then((array) =>
+    this.setState({ users: [...this.state.users, ...array] })
+  );
     // API.fetchNasaData().then((data) => this.setState({ nasaData: data }));
   }
   render() {
@@ -30,7 +36,9 @@ export default class App extends Component {
           <p>{this.state.nasaData.date}</p>
           <h4>{this.state.nasaData.explanation}</h4>
         </div> */}
-        <IndexContainer locations={this.state.locations} />
+        <IndexContainer locations={this.state.locations} users={this.state.users} />
+        <UserShowContainer users={this.state.users} events={this.state.events}/>
+        <LocationShowContainer locations={this.state.locations} />
         <SearchPage events={this.state.events} />
       </>
     );

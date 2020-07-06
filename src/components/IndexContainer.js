@@ -10,7 +10,7 @@ export default class IndexContainer extends React.Component {
         <br></br>
         <button>open the search page</button>
         <LocationsContainer locations={this.props.locations} />
-        <UsersContainer />
+        <UsersContainer users={this.props.users} />
       </div>
     );
   }
