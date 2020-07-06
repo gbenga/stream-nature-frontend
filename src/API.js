@@ -68,5 +68,5 @@ export default {
   fetchLocations,
   fetchUsers,
   postToUsers,
-  fetchNasaData,
+  // fetchNasaData,
 };
