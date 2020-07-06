@@ -4,12 +4,13 @@ import "./App.css";
 import API from "./API";
 import SearchPage from "./components/SearchPage";
 import IndexContainer from "./components/IndexContainer";
+import Profile from "./components/Profile";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
   state = {
     events: [],
     locations: [],
-    // nasaData: {},
   };
 
   componentDidMount() {
@@ -19,20 +20,33 @@ export default class App extends Component {
     API.fetchLocations().then((array) =>
       this.setState({ locations: [...this.state.locations, ...array] })
     );
-    // API.fetchNasaData().then((data) => this.setState({ nasaData: data }));
   }
   render() {
     return (
-      <>
-        {/* <div>
-          <h3>{this.state.nasaData.title}</h3>
-          <img src={this.state.nasaData.url} />
-          <p>{this.state.nasaData.date}</p>
-          <h4>{this.state.nasaData.explanation}</h4>
-        </div> */}
-        <IndexContainer locations={this.state.locations} />
-        <SearchPage events={this.state.events} />
-      </>
+      <Router>
+        <ul>
+          <li>
+            <Link to="/">Profile</Link>
+          </li>
+          <li>
+            <Link to="/index">Index</Link>
+          </li>
+          <li>
+            <Link to="/search">Search</Link>
+          </li>
+        </ul>
+        <Switch>
+          <Route path="/index">
+            <IndexContainer locations={this.state.locations} />
+          </Route>
+          <Route path="/search">
+            <SearchPage events={this.state.events} />
+          </Route>
+          <Route path="/">
+            <Profile />
+          </Route>
+        </Switch>
+      </Router>
     );
   }
 }
