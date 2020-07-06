@@ -10,7 +10,7 @@ export default class LocationsContainer extends React.Component {
   render() {
     return (
       <div className="locations-container">
-        This is the Locations Container
+       <h3> This is the Locations Container </h3>
         {this.renderLocationCards(this.props)}
       </div>
     );

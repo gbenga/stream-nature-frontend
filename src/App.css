@@ -38,11 +38,15 @@
 }
 
 .user-img {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   padding: 50px;
 }
 
 .user-card {
+  display: inline-block;
+}
+
+.location-card {
   display: inline-block;
 }
