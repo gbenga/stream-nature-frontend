@@ -4,20 +4,19 @@ import "./App.css";
 import API from "./API";
 import SearchPage from "./components/SearchPage";
 import IndexContainer from "./components/IndexContainer";
-import Profile from "./components/Profile";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useRouteMatch,
-  useParams,
-} from "react-router-dom";
+import UserShowContainer from "./components/UserShowContainer";
+import LocationShowContainer from "./components/LocationShowContainer";
+import EventShowContainer from "./components/EventShowContainer";
+import UserShowPage from "./components/UserShowPage";
+import UserShowPageBroken from "./components/UserShowPageBroken";
+import Homepage from "./components/Homepage";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
   state = {
     events: [],
     locations: [],
+    users: [],
   };
 
   componentDidMount() {
@@ -27,66 +26,62 @@ export default class App extends Component {
     API.fetchLocations().then((array) =>
       this.setState({ locations: [...this.state.locations, ...array] })
     );
+    API.fetchUsers().then((array) =>
+      this.setState({ users: [...this.state.users, ...array] })
+    );
   }
   render() {
     return (
-      <Router>
-        <ul>
-          <li>
-            <Link to="/">Profile</Link>
-          </li>
-          <li>
-            <Link to="/index">Index</Link>
-          </li>
-          <li>
-            <Link to="/search">Search</Link>
-          </li>
-          <li>
-            <Link to="/dummyusers">Dummy Users</Link>
-          </li>
-        </ul>
+      <>
+        <Router>
+          <ul>
+            <li>
+              <Link to="/">Homepage</Link>
+            </li>
+            <li>
+              <Link to="/index">Index</Link>
+            </li>
+            <li>
+              <Link to="/search">Search</Link>
+            </li>
+          </ul>
 
-        <hr></hr>
-        <Switch>
-          <Route path="/index">
-            <IndexContainer locations={this.state.locations} />
-          </Route>
-          <Route path="/search">
-            <SearchPage events={this.state.events} />
-          </Route>
-          <Route path="/dummyusers">
-            <DummyUsers />
-          </Route>
-          <Route path="/">
-            <Profile />
-          </Route>
-        </Switch>
-      </Router>
+          <hr></hr>
+          <Switch>
+            <Route exact path="/index">
+              <IndexContainer
+                locations={this.state.locations}
+                users={this.state.users}
+              />
+            </Route>
+            <Route exact path="/search">
+              <SearchPage events={this.state.events} />
+            </Route>
+            <Route
+              exact
+              path="/events/:eventId"
+              render={(routerProps) => <EventShowContainer {...routerProps} />}
+            />
+            <Route
+              exact
+              path="/users/:userId"
+              render={(routerProps) => <UserShowPage {...routerProps} />}
+              // swap this in <UserShowBroken {...routerProps} />
+            />
+            {/* Pending location show page */}
+            {/* <Route
+              exact
+              path="/locations/:locationId"
+              render={(routerProps) => <LocationShowPage {...routerProps} />}
+            /> */}
+            <Route exact path="/">
+              <Homepage />
+            </Route>
+          </Switch>
+
+          {/* <SearchPage events={this.state.events} /> */}
+        </Router>
+      </>
     );
   }
-}
-
-function DummyUsers() {
-  let match = useRouteMatch();
-
-  return (
-    <div>
-      <h2>This is for the dummy users</h2>
-      <ul>
-        <li>
-          <Link to={`${match.url}/dummyusers`}>Dummy User 1</Link>
-        </li>
-      </ul>
-      <Switch>
-        <Route path={`${match.url}/:dummyUserId`}>
-          <DummyUser />
-        </Route>
-      </Switch>
-    </div>
-  );
-}
-
-function DummyUser() {
-  let { dummyUserId } = useParams();
-  return <div>I'm your fav {dummyUserId}</div>;
 }

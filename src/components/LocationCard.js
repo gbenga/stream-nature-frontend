@@ -8,8 +8,8 @@ export default class LocationCard extends React.Component {
         <h5>City: {location.city}</h5>
         <p>Country: {location.country}</p>
         <p>
-          Coordinates: {location.longitude}
-          {location.latitude}
+          Coordinates: {location.longitude}   
+          {location.latitude}   
         </p>
       </div>
     );
