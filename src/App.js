@@ -65,7 +65,7 @@ export default class App extends Component {
             <Route
               exact
               path="/users/:userId"
-              render={(routerProps) => <UserShowPage {...routerProps} />}
+              render={(routerProps) => <UserShowPageBroken {...routerProps} />}
               // swap this in <UserShowBroken {...routerProps} />
             />
             {/* Pending location show page */}

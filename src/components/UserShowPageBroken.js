@@ -3,7 +3,13 @@ import EventCard from "./EventCard";
 import API from "../API";
 
 class UserShowPageBroken extends Component {
-  state = {};
+  state = {
+    user: {
+      followers: 0,
+      avatar: "",
+      username: "",
+    },
+  };
 
   componentDidMount() {
     // fetches to the url of the user that has been clicked
