@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import UserShowPage from "./UserShowPage";
+import API from "../API";
 
 class UserShowContainer extends Component {
   state = {
@@ -28,8 +29,6 @@ class UserShowContainer extends Component {
       <div className="user-show-container">
         <h4> This is a Users' show container </h4>
         {/* { this.passEventProps() } */}
-        {this.renderUserShowPage()}
-        {this.renderUserShowPage()}
         {this.renderUserShowPage()}
       </div>
     );
