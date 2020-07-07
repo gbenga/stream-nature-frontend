@@ -34,10 +34,18 @@ function fetchUser(userId) {
     .then((response) => response.json())
     .catch((error) => alert(`fetching data for user ${userId} didn't work"`));
 }
+function fetchLocation(locationId) {
+  return fetch(`${locationsURL}/${locationId}`)
+    .then((response) => response.json())
+    .catch((error) =>
+      alert(`fetching data for location ${locationId} didn't work"`)
+    );
+}
 export default {
   fetchEvents,
   fetchLocations,
   fetchUsers,
   postToUsers,
   fetchUser,
+  fetchLocation,
 };

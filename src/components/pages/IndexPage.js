@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import LocationsContainer from "./LocationsContainer";
-import UsersContainer from "./UsersContainer";
+import LocationsContainer from "../containers/LocationsContainer";
+import UsersContainer from "../containers/UsersContainer";
 
-export default class IndexContainer extends React.Component {
+export default class IndexPage extends Component {
   render() {
     return (
       <div className="index-container">

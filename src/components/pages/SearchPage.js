@@ -1,7 +1,7 @@
-import React from "react";
-import SearchResultsContainer from "./SearchResultsContainer";
+import React, { Component } from "react";
+import SearchResultsContainer from "../containers/SearchResultsContainer";
 
-export default class SearchPage extends React.Component {
+export default class SearchPage extends Component {
   state = {
     searchTerm: "",
   };

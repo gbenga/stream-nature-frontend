@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import UserShowPage from "./UserShowPage";
+import UserShowPage from "../pages/UserShowPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import UserShowContainer from "./UserShowContainer";
 
 class UserCard extends Component {
   render() {
