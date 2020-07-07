@@ -6,7 +6,6 @@ import SearchPage from "./components/pages/SearchPage";
 import IndexPage from "./components/pages/IndexPage";
 import LocationShowPage from "./components/pages/LocationShowPage";
 import UserShowPage from "./components/pages/UserShowPage";
-import UserShowPageBroken from "./components/pages/UserShowPageBroken";
 import Homepage from "./components/pages/Homepage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -57,20 +56,13 @@ export default class App extends Component {
             </Route>
             <Route
               exact
-              path="locations/:locationId"
+              path="/locations/:locationId"
               render={(routerProps) => <LocationShowPage {...routerProps} />}
-            ></Route>
-            {/* Pending location show page */}
-            {/* <Route
-                exact
-                path="/locations/:locationId"
-                render={(routerProps) => <LocationShowPage {...routerProps} />}
-              /> */}
+            />
             <Route
               exact
               path="/users/:userId"
-              render={(routerProps) => <UserShowPageBroken {...routerProps} />}
-              // swap this in <UserShowBroken {...routerProps} />
+              render={(routerProps) => <UserShowPage {...routerProps} />}
             />
             <Route exact path="/">
               <Homepage />
