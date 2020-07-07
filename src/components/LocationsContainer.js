@@ -16,3 +16,4 @@ export default class LocationsContainer extends React.Component {
     );
   }
 }
+

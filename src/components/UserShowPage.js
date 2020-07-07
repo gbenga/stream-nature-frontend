@@ -20,6 +20,7 @@ class UserShowPage extends Component {
       <h5> This is {this.props.user.username}'s show Page </h5>
         <img className="user-img" src={this.props.user.avatar} />
         <p> @{this.props.user.username} </p>
+        <p> {this.props.user.bio} </p>
         <p> {this.props.user.followers} Followers</p>
         <button>Follow</button>
 
