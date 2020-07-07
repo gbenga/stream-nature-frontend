@@ -26,9 +26,3 @@ class UserShowPage extends Component {
 
          <p> NUMBER OF POSTS GO HERE </p>
         <p> RENDER ALL POSTS GOES HERE </p>
-      </div>
-    );
-  }
-}
-
-export default UserShowPage;

@@ -6,31 +6,31 @@ class UserShowContainer extends Component {
     userEvents: [],
   };
 
-
- renderUserShowPage = () => {
+  renderUserShowPage = () => {
     return this.props.users.map((user, index) => (
-         <UserShowPage key={index} user={user} /> ) )
+      <UserShowPage key={index} user={user} />
+    ));
   };
-
-
 
   // renderUserShowPage = (event) => {
   //   return this.setState({userEvents: [...this.state.userEvents, {event}]}, () => <UserShowPage key={index} user={user} events={this.state.userEvents}/> )
   // };
 
   // passEventProps = () => {
-  //   this.props.events.forEach( event => 
+  //   this.props.events.forEach( event =>
   //  {event.userId === user.id?
   //    this.renderUserShowPage(event) : null}
-  //   ) 
+  //   )
   // }
 
   render() {
     return (
       <div className="user-show-container">
-      <h4> This is a Users' show container </h4>
-      {/* { this.passEventProps() } */}
-      { this.renderUserShowPage() }
+        <h4> This is a Users' show container </h4>
+        {/* { this.passEventProps() } */}
+        {this.renderUserShowPage()}
+        {this.renderUserShowPage()}
+        {this.renderUserShowPage()}
       </div>
     );
   }
