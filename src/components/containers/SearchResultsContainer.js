@@ -1,7 +1,7 @@
-import React from "react";
-import EventCard from "./EventCard";
+import React, { Component } from "react";
+import EventCard from "../cards/EventCard";
 
-export default class EventResultsContainer extends React.Component {
+export default class SearchResultsContainer extends Component {
   renderEventCards(props) {
     return props.events.map((event, idx) => (
       <EventCard event={event} key={idx} />

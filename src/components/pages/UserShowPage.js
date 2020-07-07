@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import EventCard from "./EventCard";
-import API from "../API";
+import EventCard from "../cards/EventCard";
+import API from "../../API";
 
 class UserShowPage extends Component {
-  //FIND ALL EVENTS ST EVENT.userId === this.props.user.ID
-  //ITERATE OVER EACH ONE & RENDER THE EVENT CARD
-  //SUM THE THOTAL EVENT BELONGINIG TO A USER
-  //   renderEventCard = () => {
-  //     return this.props.events.map((event, index) => (
-  //      <EventCard key={index} event={event} />
-  //     ));
-  //   };
   state = {};
 
   componentDidMount() {

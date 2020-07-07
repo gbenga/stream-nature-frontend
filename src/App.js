@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import API from "./API";
-import SearchPage from "./components/SearchPage";
-import IndexContainer from "./components/IndexContainer";
-import UserShowContainer from "./components/UserShowContainer";
-import LocationShowContainer from "./components/LocationShowContainer";
-import EventShowContainer from "./components/EventShowContainer";
-import UserShowPage from "./components/UserShowPage";
-import UserShowPageBroken from "./components/UserShowPageBroken";
-import Homepage from "./components/Homepage";
+import SearchPage from "./components/pages/SearchPage";
+import IndexPage from "./components/pages/IndexPage";
+import LocationShowPage from "./components/pages/LocationShowPage";
+import UserShowPage from "./components/pages/UserShowPage";
+import UserShowPageBroken from "./components/pages/UserShowPageBroken";
+import Homepage from "./components/pages/Homepage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
@@ -49,7 +47,7 @@ export default class App extends Component {
           <hr></hr>
           <Switch>
             <Route exact path="/index">
-              <IndexContainer
+              <IndexPage
                 locations={this.state.locations}
                 users={this.state.users}
               />
@@ -59,27 +57,25 @@ export default class App extends Component {
             </Route>
             <Route
               exact
-              path="/events/:eventId"
-              render={(routerProps) => <EventShowContainer {...routerProps} />}
-            />
+              path="locations/:locationId"
+              render={(routerProps) => <LocationShowPage {...routerProps} />}
+            ></Route>
+            {/* Pending location show page */}
+            {/* <Route
+                exact
+                path="/locations/:locationId"
+                render={(routerProps) => <LocationShowPage {...routerProps} />}
+              /> */}
             <Route
               exact
               path="/users/:userId"
               render={(routerProps) => <UserShowPageBroken {...routerProps} />}
               // swap this in <UserShowBroken {...routerProps} />
             />
-            {/* Pending location show page */}
-            {/* <Route
-              exact
-              path="/locations/:locationId"
-              render={(routerProps) => <LocationShowPage {...routerProps} />}
-            /> */}
             <Route exact path="/">
               <Homepage />
             </Route>
           </Switch>
-
-          {/* <SearchPage events={this.state.events} /> */}
         </Router>
       </>
     );

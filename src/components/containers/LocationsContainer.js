@@ -1,19 +1,19 @@
 import React, { Component } from "react";
-import LocationCard from "./LocationCard";
+import LocationCard from "../cards/LocationCard";
 
-export default class LocationsContainer extends React.Component {
+export default class LocationsContainer extends Component {
   renderLocationCards(props) {
     return props.locations.map((location, idx) => (
       <LocationCard location={location} key={idx} />
     ));
   }
+
   render() {
     return (
       <div className="locations-container">
-       <h3> This is the Locations Container </h3>
+        <h3> This is the Locations Container </h3>
         {this.renderLocationCards(this.props)}
       </div>
     );
   }
 }
-

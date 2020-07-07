@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import EventCard from "./EventCard";
-import API from "../API";
+import EventCard from "../cards/EventCard";
+import API from "../../API";
 
 class UserShowPageBroken extends Component {
   state = {
