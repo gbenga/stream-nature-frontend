@@ -7,6 +7,9 @@ import IndexPage from "./components/pages/IndexPage";
 import LocationShowPage from "./components/pages/LocationShowPage";
 import UserShowPage from "./components/pages/UserShowPage";
 import Homepage from "./components/pages/Homepage";
+import AuthPage from "./components/pages/AuthPage";
+import SignInPage from "./components/pages/SignInPage";
+import SignUpPage from "./components/pages/SignUpPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class App extends Component {
@@ -41,6 +44,15 @@ export default class App extends Component {
             <li>
               <Link to="/search">Search</Link>
             </li>
+            <li>
+              <Link to="/auth">Auth</Link>
+            </li>
+            <li>
+              <Link to="/auth/sign-in">Auth-Sign in</Link>
+            </li>
+            <li>
+              <Link to="/auth/sign-up">Auth - Sign up</Link>
+            </li>
           </ul>
 
           <hr></hr>
@@ -53,6 +65,15 @@ export default class App extends Component {
             </Route>
             <Route exact path="/search">
               <SearchPage events={this.state.events} />
+            </Route>
+            <Route exact path="/auth">
+              <AuthPage />
+            </Route>
+            <Route exact path="/auth/sign-in">
+              <SignInPage />
+            </Route>
+            <Route exact path="/auth/sign-up">
+              <SignUpPage />
             </Route>
             <Route
               exact
