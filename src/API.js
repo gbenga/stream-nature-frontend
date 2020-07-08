@@ -1,6 +1,6 @@
-const eventsURL = "http://localhost:3000/events";
-const usersURL = "http://localhost:3000/users";
-const locationsURL = "http://localhost:3000/locations";
+const eventsURL = "http://localhost:3000/api/v1/events";
+const usersURL = "http://localhost:3000/api/v1/users";
+const locationsURL = "http://localhost:3000/api/v1/locations";
 
 function fetchEvents() {
   return fetch(eventsURL)
