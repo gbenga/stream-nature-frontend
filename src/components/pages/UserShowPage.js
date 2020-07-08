@@ -5,11 +5,20 @@ import API from "../../API";
 export default class UserShowPage extends Component {
   state = {
     user: {
+      name: "",
+      username: "",
+      password_digest: "",
+      bio: "",
       followers: 0,
       avatar: "",
       username: "",
+      events: [],
     },
   };
+
+  renderEventCards(events) {
+    return events.map((event, idx) => <EventCard event={event} key={idx} />);
+  }
 
   componentDidMount() {
     API.fetchUser(this.props.match.params.userId).then((userObj) =>
@@ -20,13 +29,16 @@ export default class UserShowPage extends Component {
   render() {
     return (
       <div className="user-show-page">
-        <h5> This is {this.state.user.username}'s show Page </h5>
-        <img className="user-img" src={this.state.user.avatar} />
+        <h5> {this.state.user.username}</h5>
         <p> @{this.state.user.username} </p>
+        <img className="user-img" src={this.state.user.avatar} />
         <p> {this.state.user.followers} Followers</p>
         <button>Follow</button>
-        <p> NUMBER OF POSTS GO HERE </p>
-        <p> RENDER ALL POSTS GOES HERE </p>
+        <p>
+          {this.state.user.name} has {this.state.user.events.length} events live
+          right now. Explore below:
+        </p>
+        {this.renderEventCards(this.state.user.events)}
       </div>
     );
   }

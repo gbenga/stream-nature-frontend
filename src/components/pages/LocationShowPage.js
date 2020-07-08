@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import EventCard from "../cards/EventCard";
 import API from "../../API";
 
 export default class LocationShowPage extends Component {
@@ -7,12 +8,16 @@ export default class LocationShowPage extends Component {
       id: 0,
       city: "",
       country: "",
-      longitude: "",
-      latitude: "",
+      longitude: 0,
+      latitude: 0,
       avatar: "",
       bio: "",
+      events: [],
     },
   };
+  renderEventCards(events) {
+    return events.map((event, idx) => <EventCard event={event} key={idx} />);
+  }
 
   componentDidMount() {
     API.fetchLocation(this.props.match.params.locationId).then((locationObj) =>
@@ -24,8 +29,7 @@ export default class LocationShowPage extends Component {
     return (
       <div className="Location-show-page">
         <h4> This is a Location show page </h4>
-        This is {this.state.location.city}, {this.state.location.country} show
-        Page
+        This is {this.state.location.city}, {this.state.location.country}
         {this.state.location.avatar ? (
           <img
             className="location-img"
@@ -33,11 +37,15 @@ export default class LocationShowPage extends Component {
             alt=""
           />
         ) : (
-          <img className="location-img" src={this.props.avatar} alt="" />
+          <div>Image to be uploaded</div>
+          // <img className="location-img" src={this.props.avatar} alt="" />
         )}
         <p> {this.state.location.bio} </p>
-        <p> NUMBER OF POSTS GO HERE </p>
-        <p> Links to ALL POSTS GOES HERE </p>
+        <p>
+          There are currently {this.state.location.events.length} events for:{" "}
+          {this.state.location.city}:
+        </p>
+        {this.renderEventCards(this.state.location.events)}
       </div>
     );
   }
