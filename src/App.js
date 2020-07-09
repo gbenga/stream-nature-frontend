@@ -32,7 +32,7 @@ export default class App extends Component {
     );
     //If a user is logged in, meaning we have a JWT token for that user
     //Ask the backend to tell us who the user is
-    if (localStorage.token) {
+    if (this.state.signedIn) {
       // debugger
       // API.validate(localStorage.token)
       // .then(json => this.signIn(json.username, json.token))
@@ -46,14 +46,14 @@ export default class App extends Component {
   }
 
   signIn = (username, token) => {
-    this.setState({ username, signedIn: true });
+    this.setState({ username: username, signedIn: true });
     localStorage.token = token;
   };
 
-  signOut = () => { 
-    this.setState({username: null,  signedIn: false})
-    localStorage.removeItem("token")
-  }
+  signOut = () => {
+    this.setState({ username: null, signedIn: false });
+    localStorage.removeItem("token");
+  };
 
   render() {
     return (
@@ -91,14 +91,17 @@ export default class App extends Component {
             <Route exact path="/search">
               <SearchPage events={this.state.events} />
             </Route>
-            may change lines 96 -102
+            {/* may change lines 96 -102 */}
             <Route exact path="/auth">
               <AuthPage signOut={this.signOut} />
             </Route>
-            {this.state.signedIn? <button onClick={this.signOut}> Sign Out </button> :
-            <Route exact path="/auth/sign-in">
-              <SignInPage signIn={this.signIn} />
-            </Route> }
+            {this.state.signedIn ? (
+              <button onClick={this.signOut}> Sign Out </button>
+            ) : (
+              <Route exact path="/auth/sign-in">
+                <SignInPage signIn={this.signIn} />
+              </Route>
+            )}
             {/* may change lines 96 -102
             <Route exact path="/auth">
               <AuthPage checkLoginStatus={this.state.signedIn} signOut={this.signOut} />
@@ -120,7 +123,7 @@ export default class App extends Component {
               render={(routerProps) => <UserShowPage {...routerProps} />}
             />
             <Route exact path="/">
-              <Homepage />
+              <SignInPage signIn={this.signIn} />
             </Route>
           </Switch>
         </Router>

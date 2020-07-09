@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../../API";
+import { Card, Icon } from "semantic-ui-react";
 
 export default class EventCard extends Component {
   state = {
@@ -40,3 +41,18 @@ export default class EventCard extends Component {
     );
   }
 }
+// const CardExampleCardProps = (props) => (
+//   <Card
+//     image={props.location.avatar}
+//     header={props.location.city}
+//     meta={props.location.country}
+//     description={props.location.bio}
+//     extra={
+//       <a>
+//         <Icon name="map pin" />
+//       </a>
+//     }
+//   />
+// );
+
+// export default CardExampleCardProps;
