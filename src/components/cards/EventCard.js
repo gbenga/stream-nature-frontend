@@ -1,23 +1,7 @@
 import React, { Component } from "react";
 import API from "../../API";
-import { Card, Icon } from "semantic-ui-react";
+import { Card, Icon, Button } from "semantic-ui-react";
 
-//   render() {
-//     return (
-//       <div className="event-card">
-//         <h5>This is a card for:{this.state.name}</h5>
-//         <p>Time:{this.state.time}</p>
-//         <button onClick={this.handleClickButton}>Like</button>
-//         <p>{this.state.likes} likes</p>
-//         <p>
-//           Hosted by user: {this.state.user.name}, live from:{" "}
-//           {this.state.location.city}
-//         </p>
-//       </div>
-//     );
-//   }
-// }
-// class CardExampleCardProps extends Component {
 export default class EventCard extends Component {
   state = {
     id: 0,
@@ -41,22 +25,30 @@ export default class EventCard extends Component {
       });
     });
   };
+
   render() {
     return (
       <Card
         image={this.state.avatar}
         header={this.state.name}
         meta={this.state.time}
+        meta={`${this.state.likes} likes`}
         description={`Live from: ${this.state.location.city},${this.state.location.country}`}
         extra={
-          <a>
-            <Icon name="user" />
-            Hosted by: {this.state.user.name}
-          </a>
+          <>
+            <a>
+              <Icon name="user" />
+              Hosted by: {this.state.user.name}
+            </a>
+            <Button onClick={this.handleClickButton} animated="vertical">
+              <Button.Content hidden>Like</Button.Content>
+              <Button.Content visible>
+                <Icon name="like" />
+              </Button.Content>
+            </Button>
+          </>
         }
       />
     );
   }
 }
-
-// export default CardExampleCardProps;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import EventCard from "../cards/EventCard";
 import API from "../../API";
+import { Header, Icon, Button, Image } from "semantic-ui-react";
 
 export default class UserShowPage extends Component {
   state = {
@@ -34,19 +35,32 @@ export default class UserShowPage extends Component {
   render() {
     return (
       <div className="user-show-page">
-        <h5> {this.state.username}</h5>
-        <p> @{this.state.username} </p>
-        <img
-          className="user-img"
+        <Header as="h2" icon textAlign="center">
+          <Header.Content>{this.state.name}</Header.Content>
+        </Header>
+        <Image
           src={this.state.avatar}
           alt={`avatar for ${this.state.name}`}
+          size="medium"
+          verticalAlign="top"
         />
-        <p> {this.state.followers} Followers</p>
-        <button onClick={this.handleClickButton}>Follow</button>
-        <p>
-          {this.state.name} has {this.state.events.length} events live right
-          now. Explore below:
-        </p>
+        <span>@{this.state.username}</span>
+        <Header as="h4" icon textAlign="center">
+          <Header.Content>{this.state.followers} Followers</Header.Content>
+        </Header>
+        <Button onClick={this.handleClickButton} animated="vertical">
+          <Button.Content visible>Follow</Button.Content>
+          <Button.Content hidden>
+            <Icon name="handshake" />
+          </Button.Content>
+        </Button>
+        <Header as="h4" icon textAlign="center">
+          <Header.Content>
+            {this.state.name} has {this.state.events.length} events live right
+            now. Explore below:
+          </Header.Content>
+        </Header>
+        <p></p>
         {this.renderEventCards(this.state.events)}
       </div>
     );
