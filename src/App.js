@@ -45,9 +45,13 @@ export default class App extends Component {
     }
   }
 
+  //Invoked in signInPage.js line 44
   signIn = (username, token) => {
-    this.setState({ username: username, signedIn: true });
+
+    if (username) {
+    this.setState({ username: username, signedIn: !this.state.signedIn });
     localStorage.token = token;
+    }
   };
 
   signOut = () => {
