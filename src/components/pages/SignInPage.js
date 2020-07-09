@@ -41,7 +41,7 @@ export default class SignInPage extends Component {
     
     return fetch("http://localhost:3000/api/v1/sign-in", configObj)
     .then(resp => resp.json() )
-    .then(json => this.props.signIn(json.username))
+    .then(json => this.props.signIn(json.username, json.token))
     .catch((error) => alert("Incorrect details - Please try again"));
   }
   
@@ -49,7 +49,6 @@ export default class SignInPage extends Component {
     return (
       <div className="sign-in-page">
         This is the Sign in page - add a form here
-         {/* Add below code to sign-in page */}
       <div> {this.signInForm()}  </div>
       </div>
     );

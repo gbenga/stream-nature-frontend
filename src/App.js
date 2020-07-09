@@ -32,7 +32,10 @@ export default class App extends Component {
     );
   }
 
-  signIn = (username) => { this.setState({username}) }
+  signIn = (username, token) => { 
+    this.setState({username})
+    localStorage.token = token
+  }
 
   render() {
     return (
