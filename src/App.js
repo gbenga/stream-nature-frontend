@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import API from "./API";
 import SearchPage from "./components/pages/SearchPage";

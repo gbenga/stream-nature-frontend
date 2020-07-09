@@ -10,7 +10,6 @@ export default class UserShowPage extends Component {
     bio: "",
     followers: 0,
     avatar: "",
-    username: "",
     events: [],
   };
 
@@ -37,7 +36,11 @@ export default class UserShowPage extends Component {
       <div className="user-show-page">
         <h5> {this.state.username}</h5>
         <p> @{this.state.username} </p>
-        <img className="user-img" src={this.state.avatar} />
+        <img
+          className="user-img"
+          src={this.state.avatar}
+          alt={`avatar for ${this.state.name}`}
+        />
         <p> {this.state.followers} Followers</p>
         <button onClick={this.handleClickButton}>Follow</button>
         <p>
