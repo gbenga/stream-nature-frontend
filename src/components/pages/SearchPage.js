@@ -4,20 +4,27 @@ import SearchResultsContainer from "../containers/SearchResultsContainer";
 export default class SearchPage extends Component {
   state = {
     searchTerm: "",
+    filteredEvents: [],
   };
+
+  componentDidMount() {
+    this.setState({ filteredEvents: this.props.events });
+  }
 
   updateSearchTerm = (e) => {
     this.setState({ searchTerm: e.target.value });
   };
 
   filterEvents = (eventsToFilter) => {
-    return eventsToFilter.filter((x) =>
+    let ev = eventsToFilter.filter((x) =>
       x.name.toLowerCase().includes(this.state.searchTerm)
     );
+    this.setState({ filteredEvents: ev });
   };
 
-  eventsToRender = () => {
-    return this.filterEvents(this.props.events);
+  handleChange = (e) => {
+    this.updateSearchTerm(e);
+    this.filterEvents(this.props.events);
   };
 
   render() {
@@ -30,10 +37,10 @@ export default class SearchPage extends Component {
         <input
           type="text"
           className="search-bar"
-          onChange={this.updateSearchTerm}
+          onChange={this.handleChange}
         ></input>
         <br></br>
-        <SearchResultsContainer events={this.eventsToRender()} />
+        <SearchResultsContainer events={this.state.filteredEvents} />
       </>
     );
   }
