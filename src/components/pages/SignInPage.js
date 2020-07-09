@@ -41,7 +41,8 @@ export default class SignInPage extends Component {
     
     return fetch("http://localhost:3000/api/v1/sign-in", configObj)
     .then(resp => resp.json() )
-    .then(json => console.log(json))
+    .then(json => this.props.signIn(json.username))
+    .catch((error) => alert("Incorrect details - Please try again"));
   }
   
   render() {
