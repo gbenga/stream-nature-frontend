@@ -45,9 +45,12 @@ export default class App extends Component {
     }
   }
 
+  //Invoked in signInPage.js line 44
   signIn = (username, token) => {
-    this.setState({ username, signedIn: true });
+    if (username) {
+    this.setState({ username: username, signedIn: !this.state.signedIn });
     localStorage.token = token;
+    }
   };
 
   signOut = () => { 
@@ -91,7 +94,7 @@ export default class App extends Component {
             <Route exact path="/search">
               <SearchPage events={this.state.events} />
             </Route>
-            may change lines 96 -102
+            {/* may change lines 96 -102 */}
             <Route exact path="/auth">
               <AuthPage signOut={this.signOut} />
             </Route>
