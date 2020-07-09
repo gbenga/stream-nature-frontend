@@ -6,7 +6,6 @@ import IndexPage from "./components/pages/IndexPage";
 import LocationShowPage from "./components/pages/LocationShowPage";
 import UserShowPage from "./components/pages/UserShowPage";
 import Homepage from "./components/pages/Homepage";
-import AuthPage from "./components/pages/AuthPage";
 import SignInPage from "./components/pages/SignInPage";
 import SignUpPage from "./components/pages/SignUpPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -47,10 +46,9 @@ export default class App extends Component {
 
   //Invoked in signInPage.js line 44
   signIn = (username, token) => {
-
     if (username) {
-    this.setState({ username: username, signedIn: !this.state.signedIn });
-    localStorage.token = token;
+      this.setState({ username: username, signedIn: !this.state.signedIn });
+      localStorage.token = token;
     }
   };
 
@@ -65,22 +63,13 @@ export default class App extends Component {
         <Router>
           <ul>
             <li>
-              <Link to="/">Homepage</Link>
-            </li>
-            <li>
               <Link to="/index">Index</Link>
             </li>
             <li>
               <Link to="/search">Search</Link>
             </li>
             <li>
-              <Link to="/auth">Auth</Link>
-            </li>
-            <li>
-              <Link to="/auth/sign-in">Auth-Sign in</Link>
-            </li>
-            <li>
-              <Link to="/auth/sign-up">Auth - Sign up</Link>
+              <Link to="/">Profile</Link>
             </li>
           </ul>
 
@@ -96,9 +85,9 @@ export default class App extends Component {
               <SearchPage events={this.state.events} />
             </Route>
             {/* may change lines 96 -102 */}
-            <Route exact path="/auth">
+            {/* <Route exact path="/auth">
               <AuthPage signOut={this.signOut} />
-            </Route>
+            </Route> */}
             {this.state.signedIn ? (
               <button onClick={this.signOut}> Sign Out </button>
             ) : (
@@ -127,7 +116,7 @@ export default class App extends Component {
               render={(routerProps) => <UserShowPage {...routerProps} />}
             />
             <Route exact path="/">
-              <SignInPage signIn={this.signIn} />
+              <Homepage user={this.state.username} />
             </Route>
           </Switch>
         </Router>

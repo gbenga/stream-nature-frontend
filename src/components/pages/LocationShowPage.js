@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import EventCard from "../cards/EventCard";
 import API from "../../API";
-import { Header, Icon, Image } from "semantic-ui-react";
+import { Header, Icon } from "semantic-ui-react";
 
 export default class LocationShowPage extends Component {
   state = {
