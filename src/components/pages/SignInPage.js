@@ -7,23 +7,42 @@ export default class SignInPage extends Component {
     password: ""
   }
   
-  //Add this function & its invokation to sign in page
   signInForm = () => {
     return <form className="sign-in-form" onSubmit={this.handleSubmit}>
-     <input type="text" placeholder="Username"/>
-     <input type="password" placeholder="Password"/>
+     <input onChange={this.handleUsernameChange} type="text" placeholder="Username"/>
+     <input onChange={this.handlePasswordChange} type="password" placeholder="Password"/>
      <input type="submit" value="Sign-in"/>
    </form>
    }
-   
+
+   handleUsernameChange = (event) => {
+    this.setState({ username: event.target.value })
+   };
+
+   handlePasswordChange = (event) => {
+    this.setState({ password: event.target.value })
+   };
+
    handleSubmit = (event) => {
-     event.preventDefault()
-     this.setState( {
-       username: event.target[0].value,
-       password: event.target[1].value
-     } , () => console.log(this.state))
-   
-   }
+    event.preventDefault()
+    this.sendSignInDataToRails() 
+  }
+
+ //----------- (POST) Send SignIn Data from state To Rails -----------//
+   sendSignInDataToRails = () => {
+    let configObj = {
+     method: "POST",
+     headers: {
+           "Content-Type": "application/json",
+           "Accept": "application/json"
+     },
+     body: JSON.stringify(this.state) //We send the state as the body of the configObj
+    }
+    
+    return fetch("http://localhost:3000/api/v1/sign-in", configObj)
+    .then(resp => resp.json() )
+    .then(json => console.log(json))
+  }
   
   render() {
     return (
