@@ -62,17 +62,17 @@ function fetchEvent(eventId) {
 }
 
 // Auth
-function getUserIdFromJwtToken(url, token){
-  const configObject = { headers: { "Authorization": token} };
-  return fetch(url, configObject)
+function getUserIdFromJwtToken(url, token) {
+  const configObject = { headers: { Authorization: token } };
+  return fetch(url, configObject);
 }
 
 function validate(token) {
   // debugger
- return getUserIdFromJwtToken(validateURL, token)
-  .then((response) => response.json())
+  return getUserIdFromJwtToken(validateURL, token).then((response) =>
+    response.json()
+  );
 }
-
 
 export default {
   fetchEvents,
@@ -81,12 +81,9 @@ export default {
   postToUsers,
   fetchUser,
   fetchLocation,
-<<<<<<< HEAD
   patchToUser,
   fetchEvent,
   patchToEvent,
-=======
   getUserIdFromJwtToken,
   validate,
->>>>>>> 7f014efe11e03747380ef374614fd269fbc9539e
 };
