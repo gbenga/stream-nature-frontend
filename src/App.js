@@ -33,23 +33,23 @@ export default class App extends Component {
     );
     //If a user is logged in, meaning we have a JWT token for that user
     //Ask the backend to tell us who the user is
-    if (localStorage.token) { 
+    if (localStorage.token) {
       // debugger
       // API.validate(localStorage.token)
       // .then(json => this.signIn(json.username, json.token))
       // .catch((error) => alert("Validating JWT token failed"));
-      const configObject = { headers: { "Authorization": localStorage.token} };
+      const configObject = { headers: { Authorization: localStorage.token } };
       return fetch("http://localhost:3000/api/v1/validate", configObject)
-      .then((response) => response.json())
-      .then(json => this.signIn(json.username, json.token))
-      .catch((error) => alert("Validating JWT token failed"));
+        .then((response) => response.json())
+        .then((json) => this.signIn(json.username, json.token))
+        .catch((error) => alert("Validating JWT token failed"));
     }
   }
 
-  signIn = (username, token) => { 
-    this.setState({username,  signedIn: true})
-    localStorage.token = token
-  }
+  signIn = (username, token) => {
+    this.setState({ username, signedIn: true });
+    localStorage.token = token;
+  };
 
   render() {
     return (
