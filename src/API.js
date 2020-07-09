@@ -41,17 +41,10 @@ function fetchLocation(locationId) {
       alert(`fetching data for location ${locationId} didn't work"`)
     );
 }
-function patchToUser(userObj) {
-  const configObject = {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(userObj),
-  };
+function patchToUser(userId) {
+  const configObject = { method: "PATCH" };
 
-  return fetch(`${usersURL}/${userObj.id}`, configObject)
+  return fetch(`${usersURL}/${userId}/follow`, configObject)
     .then((resp) => resp.json())
     .catch((err) => alert("updating this user didn't work"));
 }
