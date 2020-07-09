@@ -50,6 +50,11 @@ export default class App extends Component {
     localStorage.token = token;
   };
 
+  signOut = () => { 
+    this.setState({username: null,  signedIn: false})
+    localStorage.removeItem("token")
+  }
+
   render() {
     return (
       <>
@@ -86,12 +91,21 @@ export default class App extends Component {
             <Route exact path="/search">
               <SearchPage events={this.state.events} />
             </Route>
+            may change lines 96 -102
             <Route exact path="/auth">
-              <AuthPage />
+              <AuthPage signOut={this.signOut} />
             </Route>
+            {this.state.signedIn? <button onClick={this.signOut}> Sign Out </button> :
             <Route exact path="/auth/sign-in">
               <SignInPage signIn={this.signIn} />
-            </Route>
+            </Route> }
+            {/* may change lines 96 -102
+            <Route exact path="/auth">
+              <AuthPage checkLoginStatus={this.state.signedIn} signOut={this.signOut} />
+            </Route> */}
+            {/* <Route exact path="/auth/sign-in">
+              <SignInPage signIn={this.signIn} />
+            </Route>  */}
             <Route exact path="/auth/sign-up">
               <SignUpPage />
             </Route>
