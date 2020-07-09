@@ -1,6 +1,7 @@
 const eventsURL = "http://localhost:3000/api/v1/events";
 const usersURL = "http://localhost:3000/api/v1/users";
 const locationsURL = "http://localhost:3000/api/v1/locations";
+const validateURL = "http://localhost:3000/api/v1/validate";
 
 function fetchEvents() {
   return fetch(eventsURL)
@@ -41,6 +42,19 @@ function fetchLocation(locationId) {
       alert(`fetching data for location ${locationId} didn't work"`)
     );
 }
+// Auth
+function getUserIdFromJwtToken(url, token){
+  const configObject = { headers: { "Authorization": token} };
+  return fetch(url, configObject)
+}
+
+function validate(token) {
+  // debugger
+ return getUserIdFromJwtToken(validateURL, token)
+  .then((response) => response.json())
+}
+
+
 export default {
   fetchEvents,
   fetchLocations,
@@ -48,4 +62,6 @@ export default {
   postToUsers,
   fetchUser,
   fetchLocation,
+  getUserIdFromJwtToken,
+  validate,
 };
