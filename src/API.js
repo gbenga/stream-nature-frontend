@@ -26,7 +26,6 @@ function postToUsers(userObj) {
 
   fetch(usersURL, configObject)
     .then((resp) => resp.json())
-    .then((object) => console.log(object))
     .catch((error) => alert("Creating a new user didn't work"));
 }
 function fetchUser(userId) {
@@ -48,6 +47,19 @@ function patchToUser(userId) {
     .then((resp) => resp.json())
     .catch((err) => alert("updating this user didn't work"));
 }
+function patchToEvent(eventId) {
+  const configObject = { method: "PATCH" };
+
+  return fetch(`${eventsURL}/${eventId}/like`, configObject)
+    .then((resp) => resp.json())
+    .catch((err) => alert("updating this event didn't work"));
+}
+function fetchEvent(eventId) {
+  return fetch(`${eventsURL}/${eventId}`)
+    .then((response) => response.json())
+    .catch((error) => alert(`fetching data for event ${eventId} didn't work"`));
+}
+
 export default {
   fetchEvents,
   fetchLocations,
@@ -56,4 +68,6 @@ export default {
   fetchUser,
   fetchLocation,
   patchToUser,
+  fetchEvent,
+  patchToEvent,
 };
