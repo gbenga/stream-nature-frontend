@@ -17,6 +17,7 @@ export default class App extends Component {
     events: [],
     locations: [],
     users: [],
+    username: null,
   };
 
   componentDidMount() {
@@ -30,6 +31,12 @@ export default class App extends Component {
       this.setState({ users: [...this.state.users, ...array] })
     );
   }
+
+  signIn = (username, token) => { 
+    this.setState({username})
+    localStorage.token = token
+  }
+
   render() {
     return (
       <>
@@ -70,7 +77,7 @@ export default class App extends Component {
               <AuthPage />
             </Route>
             <Route exact path="/auth/sign-in">
-              <SignInPage />
+              <SignInPage signIn={this.signIn} />
             </Route>
             <Route exact path="/auth/sign-up">
               <SignUpPage />
