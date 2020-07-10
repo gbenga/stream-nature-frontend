@@ -9,7 +9,7 @@ import Homepage from "./components/pages/Homepage";
 import SignInPage from "./components/pages/SignInPage";
 import SignUpPage from "./components/pages/SignUpPage";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
-import { Menu } from 'semantic-ui-react'
+import { Menu } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -44,8 +44,7 @@ class App extends Component {
       //   .then((response) => response.json())
       //   .then((json) => this.signIn(json.username, json.token))
       //   .catch((error) => alert("Validating JWT token failed"));
-      API.validate()
-      .then( this.signIn )
+      API.validate().then(this.signIn);
     }
   }
 
@@ -58,88 +57,92 @@ class App extends Component {
   signOut = () => {
     this.setState({ user: null });
     localStorage.removeItem("token");
-    this.props.history.push('/auth/sign-in')
+    // this.props.history.push('/auth/sign-in')
   };
 
   render() {
     return (
       <>
-          <ul>
-            {
-              this.state.user
-              ? <Menu>
+        <ul>
+          {this.state.user ? (
+            <Menu>
               <Menu.Item>
-                  <Link to="/index">Index</Link>
+                <Link to="/index">Index</Link>
               </Menu.Item>
               <Menu.Item>
-                  <Link to="/search">Search</Link>
+                <Link to="/search">Search</Link>
               </Menu.Item>
-                <Menu.Item>
-                  <Link to={`/users/${this.state.user.id}`}>Profile</Link>
+              <Menu.Item>
+                <Link to={`/users/${this.state.user.id}`}>Profile</Link>
               </Menu.Item>
-                <Menu.Item>
-                  <Link onClick={this.signOut}>Sign Out</Link>
+              <Menu.Item>
+                <Link to="/auth/sign-in" onClick={this.signOut}>
+                  Sign Out
+                </Link>
               </Menu.Item>
-                </Menu>
-              :  <Menu>
+            </Menu>
+          ) : (
+            <Menu>
               <Menu.Item>
                 <Link to="/auth/sign-up">Sign Up</Link>
-                </Menu.Item>
-                <Menu.Item>
+              </Menu.Item>
+              <Menu.Item>
                 <Link to="/auth/sign-in">Sign In</Link>
-                </Menu.Item>
-               </Menu>
-            }
-          </ul>
+              </Menu.Item>
+            </Menu>
+          )}
+        </ul>
 
-          <hr></hr>
-          <Switch>
-            <Route exact path="/index">
-              <IndexPage
-                locations={this.state.locations}
-                users={this.state.users}
-              />
-            </Route>
-            <Route exact path="/search">
-              <SearchPage events={this.state.events} />
-            </Route>
-            {/* may change lines 96 -102 */}
-            {/* <Route exact path="/auth">
+        <hr></hr>
+        <Switch>
+          <Route exact path="/index">
+            <IndexPage
+              locations={this.state.locations}
+              users={this.state.users}
+            />
+          </Route>
+          <Route exact path="/search">
+            <SearchPage events={this.state.events} />
+          </Route>
+          {/* may change lines 96 -102 */}
+          {/* <Route exact path="/auth">
               <AuthPage signOut={this.signOut} />
             </Route> */}
-            <Route 
-              exact 
-              path="/auth/sign-in"
-              render={ routerProps => <SignInPage {...routerProps} signIn={this.signIn} />}
-            />
-            {/* may change lines 96 -102
+          <Route
+            exact
+            path="/auth/sign-in"
+            render={(routerProps) => (
+              <SignInPage {...routerProps} signIn={this.signIn} />
+            )}
+          />
+          {/* may change lines 96 -102
             <Route exact path="/auth">
               <AuthPage checkLoginStatus={this.state.signedIn} signOut={this.signOut} />
             </Route> */}
-            {/* <Route exact path="/auth/sign-in">
+          {/* <Route exact path="/auth/sign-in">
               <SignInPage signIn={this.signIn} />
             </Route>  */}
-            <Route exact path="/auth/sign-up">
-              <SignUpPage />
-            </Route>
-            <Route
-              exact
-              path="/locations/:locationId"
-              render={(routerProps) => <LocationShowPage {...routerProps} />}
-            />
-            <Route
-              exact
-              path="/users/:userId"
-              render={(routerProps) => <UserShowPage {...routerProps} />}
-            />
-            <Route exact path="/">
+          <Route exact path="/auth/sign-up">
+            <SignUpPage />
+          </Route>
+          <Route
+            exact
+            path="/locations/:locationId"
+            render={(routerProps) => <LocationShowPage {...routerProps} />}
+          />
+          <Route
+            exact
+            path="/users/:userId"
+            render={(routerProps) => <UserShowPage {...routerProps} />}
+          />
+          <Route exact path="/">
             <SignInPage signIn={this.signIn} />
-              {/* <Homepage user={this.state.username} /> */}
-            </Route>
-          </Switch>
+            {/* <Homepage user={this.state.username} /> */}
+          </Route>
+        </Switch>
       </>
     );
   }
 }
 
-export default withRouter(App)
+export default withRouter(App);

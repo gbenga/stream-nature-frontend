@@ -16,16 +16,16 @@ export default class SearchPage extends Component {
     this.setState({ searchTerm: e.target.value });
   };
 
-  filterEvents = (eventsToFilter) => {
-    let ev = eventsToFilter.filter((x) =>
-      x.name.toLowerCase().includes(this.state.searchTerm)
+  filterEvents = () => {
+    return this.props.events.filter((e) =>
+      e.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     );
-    this.setState({ filteredEvents: ev });
+    // this.setState({ filteredEvents: ev });
   };
 
   handleChange = (e) => {
     this.updateSearchTerm(e);
-    this.filterEvents(this.props.events);
+    // this.filterEvents(this.props.events);
   };
 
   render() {
@@ -44,7 +44,7 @@ export default class SearchPage extends Component {
           </Form.Field>
         </Form>
         <br></br>
-        <SearchResultsContainer events={this.state.filteredEvents} />
+        <SearchResultsContainer events={this.filterEvents()} />
       </>
     );
   }
