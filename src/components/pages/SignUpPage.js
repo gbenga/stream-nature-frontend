@@ -1,51 +1,10 @@
 import React, { Component } from "react";
 import API from "../../API";
-import { Card, Icon, Form, Button } from "semantic-ui-react";
+import SignUpForm from '../containers/SignUpForm'
+import { Card, Icon } from "semantic-ui-react";
 
 export default class SignUpPage extends Component {
-  state = {
-    newUser: {},
-  };
-
-  signUpForm = () => {
-    return (
-      <Form className="new-user-form" onSubmit={this.handleSubmit}>
-        <Form.Field required>
-          <Form.Input
-            onChange={this.handleChangeName}
-            type="text"
-            placeholder="Name"
-            label="Name"
-          />
-          <Form.Input
-            onChange={this.handleChangeAvatar}
-            type="text"
-            placeholder="Profile picture"
-            label="Profile picture"
-          />
-          <Form.Input
-            onChange={this.handleChangeUsername}
-            type="text"
-            placeholder="Username"
-            label="Username"
-          />
-          <Form.Input
-            onChange={this.handleChangePassword}
-            type="password"
-            placeholder="Password"
-            label="Password"
-          />
-          <Form.Input
-            onChange={this.handleChangeBio}
-            type="text"
-            placeholder="Bio"
-            label="Bio"
-          />
-          <Button content="Sign-up" value="Sign-up" />
-        </Form.Field>
-      </Form>
-    );
-  };
+  
 
   handleChangeName = (e) => {
     this.setState({
@@ -77,17 +36,12 @@ export default class SignUpPage extends Component {
     });
   };
 
-  setDefaultUserData = (user) => {
-    user.followers = 0;
-    // user.bio = "";
-    console.log(user);
-    return user;
-  };
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    API.postToUsers(this.setDefaultUserData(this.state.newUser));
-  };
+  // setDefaultUserData = (user) => {
+  //   user.followers = 0;
+  //   // user.bio = "";
+  //   console.log(user);
+  //   return user;
+  // };
 
   render() {
     return (
@@ -97,7 +51,7 @@ export default class SignUpPage extends Component {
             <Icon name="edit" />
           </Card.Content>
           <Card.Content header="Create an Account" />
-          <div> {this.signUpForm()} </div>
+          <SignUpForm handleSubmit={this.handleSubmit}/>
         </Card>
       </div>
     );

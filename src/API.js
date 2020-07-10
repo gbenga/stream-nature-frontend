@@ -25,7 +25,7 @@ function postToUsers(userObj) {
     body: JSON.stringify(userObj),
   };
 
-  fetch(usersURL, configObject)
+  return fetch(usersURL, configObject)
     .then((resp) => resp.json())
     .catch((error) => alert("Creating a new user didn't work"));
 }
@@ -67,11 +67,16 @@ function getUserIdFromJwtToken(url, token) {
   return fetch(url, configObject);
 }
 
-function validate(token) {
+function validate() {
   // debugger
-  return getUserIdFromJwtToken(validateURL, token).then((response) =>
-    response.json()
-  );
+  const configObject = { headers: { Authorization: localStorage.token } };
+  return fetch("http://localhost:3000/api/v1/validate", configObject)
+    .then((response) => response.json())
+    .catch((error) => alert("Validating JWT token failed"));
+
+  // return getUserIdFromJwtToken(validateURL, token).then((response) =>
+  //   response.json()
+  // );
 }
 
 export default {
