@@ -1,10 +1,23 @@
 import React, { Component } from "react";
 import API from "../../API";
+import { Card, Icon, Form, Button } from "semantic-ui-react";
 
 export default class SignUpPage extends Component {
   state = {
     newUser: {},
   };
+
+  signUpForm = () => {
+    return <Form className="new-user-form" onSubmit={this.handleSubmit}>
+    <Form.Field required>
+    <Form.Input onChange={this.handleChangeName} type="text" placeholder="Name" label="Name"/>
+    <Form.Input onChange={this.handleChangeAvatar} type="text" placeholder="Profile picture" label="Profile picture"/>
+    <Form.Input onChange={this.handleChangeUsername} type="text" placeholder="Username" label="Username"/>
+    <Form.Input onChange={this.handleChangePassword} type="password" placeholder="Password" label="Password"/>
+    <Button content='Sign-up' value="Sign-up"/> 
+    </Form.Field>
+   </Form>
+   }
 
   handleChangeName = (e) => {
     this.setState({
@@ -18,37 +31,46 @@ export default class SignUpPage extends Component {
     });
   };
 
-  handleChangeBio = (e) => {
+  handleChangeAvatar = (e) => {
     this.setState({
-      newUser: { ...this.state.newUser, ...{ bio: e.target.value } },
+      newUser: { ...this.state.newUser, ...{ avatarUrl: e.target.value } },
     });
   };
 
-  setLikesToZero = (user) => {
-    user.likes = 0;
+  handleChangePassword = (e) => {
+    this.setState({
+      newUser: { ...this.state.newUser, ...{ password: e.target.value } },
+    });
+  };
+
+  // handleChangeBio = (e) => {
+  //   this.setState({
+  //     newUser: { ...this.state.newUser, ...{ bio: e.target.value } },
+  //   });
+  // };
+
+  setDefaultUserData = (user) => {
+    user.followers = 0;
+    user.bio = "";
+    console.log(user)
     return user;
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    API.postToUsers(this.setLikesToZero(this.state.newUser));
+    API.postToUsers(this.setDefaultUserData(this.state.newUser));
   };
 
   render() {
     return (
       <div className="sign-up-page">
-        this is the sign up page, add a form here
-        <form className="new-user-form" onSubmit={this.handleSubmit}>
-          <label className="label">First Name:</label>
-          <input className="input" onChange={this.handleChangeName}></input>
-          <label className="label">username:</label>
-          <input className="input" onChange={this.handleChangeUsername}></input>
-          <label className="label">bio:</label>
-          <input className="input" onChange={this.handleChangeBio}></input>
-          <button className="button" type="submit">
-            Submit new User
-          </button>
-        </form>
+      <Card>
+       <Card.Content extra>
+      <Icon name='edit' />
+      </Card.Content>
+      <Card.Content header="Create an Account" />
+      <div> {this.signUpForm()}  </div>
+      </Card>
       </div>
     );
   }

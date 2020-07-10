@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Card, Icon, Form, Button } from "semantic-ui-react";
 
 export default class SignInPage extends Component {
   
@@ -8,12 +9,15 @@ export default class SignInPage extends Component {
   }
   
   signInForm = () => {
-    return <form className="sign-in-form" onSubmit={this.handleSubmit}>
-     <input onChange={this.handleUsernameChange} type="text" placeholder="Username"/>
-     <input onChange={this.handlePasswordChange} type="password" placeholder="Password"/>
-     <input type="submit" value="Sign-in"/>
-   </form>
+    return <Form className="sign-in-form" onSubmit={this.handleSubmit}>
+    <Form.Field required>
+    <Form.Input onChange={this.handleUsernameChange} type="text" placeholder="Username" label="Username"/>
+    <Form.Input onChange={this.handlePasswordChange} type="password" placeholder="Password" label="Password"/>
+    <Button content='Sign-in' value="Sign-in"/> 
+    </Form.Field>
+   </Form>
    }
+
 
    handleUsernameChange = (event) => {
     this.setState({ username: event.target.value })
@@ -42,14 +46,20 @@ export default class SignInPage extends Component {
     return fetch("http://localhost:3000/api/v1/sign-in", configObj)
     .then(resp => resp.json() )
     .then(json => this.props.signIn(json.username, json.token))
-    .catch((error) => alert("Incorrect details - Please try again"));
+    .catch((error) => console.log(error.message));
+    
   }
   
   render() {
     return (
       <div className="sign-in-page">
-        This is the Sign in page - add a form here
+       <Card className="sign-in-page">
+       <Card.Content extra>
+      <Icon name='sign-in' />
+      </Card.Content>
+      <Card.Content header='Enter Your log-in details' />
       <div> {this.signInForm()}  </div>
+      </Card>
       </div>
     );
   }

@@ -43,10 +43,15 @@
   padding: 50px;
 }
 
-.user-card {
+/* .user-card {
   display: inline-block;
 }
 
-.location-card {
+.locations-container {
   display: inline-block;
+} */
+
+.sign-in-page{ 
+  padding: 70px 0;
+  text-align: center;
 }
