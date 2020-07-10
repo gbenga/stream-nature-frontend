@@ -15,6 +15,7 @@ export default class App extends Component {
     events: [],
     locations: [],
     users: [],
+    user: null,
     username: null,
     signedIn: false,
   };
@@ -31,29 +32,30 @@ export default class App extends Component {
     );
     //If a user is logged in, meaning we have a JWT token for that user
     //Ask the backend to tell us who the user is
-    if (this.state.signedIn && localStorage.token ) {
+
+    if (localStorage.token) {
       // debugger
       // API.validate(localStorage.token)
       // .then(json => this.signIn(json.username, json.token))
       // .catch((error) => alert("Validating JWT token failed"));
-      const configObject = { headers: { Authorization: localStorage.token } };
-      return fetch("http://localhost:3000/api/v1/validate", configObject)
-        .then((response) => response.json())
-        .then((json) => this.signIn(json.username, json.token))
-        .catch((error) => alert("Validating JWT token failed"));
+      // const configObject = { headers: { Authorization: localStorage.token } };
+      // return fetch("http://localhost:3000/api/v1/validate", configObject)
+      //   .then((response) => response.json())
+      //   .then((json) => this.signIn(json.username, json.token))
+      //   .catch((error) => alert("Validating JWT token failed"));
+      API.validate()
+      .then( this.signIn )
     }
   }
 
   //Invoked in signInPage.js line 44
-  signIn = (username, token) => {
-    if (username) {
-      this.setState({ username: username, signedIn: !this.state.signedIn });
-      localStorage.token = token;
-    }
+  signIn = (userObj, token) => {
+    this.setState({ user: userObj });
+    if (token) localStorage.token = token;
   };
 
   signOut = () => {
-    this.setState({ username: null, signedIn: false });
+    this.setState({ user: null });
     localStorage.removeItem("token");
   };
 
@@ -62,15 +64,26 @@ export default class App extends Component {
       <>
         <Router>
           <ul>
-            <li>
-              <Link to="/index">Index</Link>
-            </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
-            <li>
-              <Link to="/">Profile</Link>
-            </li>
+            {
+              this.state.user
+              ? <>
+                <li>
+                  <Link to="/index">Index</Link>
+                </li>
+                <li>
+                  <Link to="/search">Search</Link>
+                </li>
+                <li>
+                  <Link to="/">Profile</Link>
+                </li>
+                <li>
+                  <Link onClick={this.signOut}>Sign Out</Link>
+                </li>
+              </>
+              : <li>
+                <Link to="/auth/sign-up">Sign Up</Link>
+              </li>
+            }
           </ul>
 
           <hr></hr>
@@ -88,13 +101,9 @@ export default class App extends Component {
             {/* <Route exact path="/auth">
               <AuthPage signOut={this.signOut} />
             </Route> */}
-            {this.state.signedIn ? (
-              <button onClick={this.signOut}> Sign Out </button>
-            ) : (
-              <Route exact path="/auth/sign-in">
-                <SignInPage signIn={this.signIn} />
-              </Route>
-            )}
+            <Route exact path="/auth/sign-in">
+              <SignInPage signIn={this.signIn} />
+            </Route>
             {/* may change lines 96 -102
             <Route exact path="/auth">
               <AuthPage checkLoginStatus={this.state.signedIn} signOut={this.signOut} />
@@ -116,7 +125,8 @@ export default class App extends Component {
               render={(routerProps) => <UserShowPage {...routerProps} />}
             />
             <Route exact path="/">
-              <Homepage user={this.state.username} />
+            <SignInPage signIn={this.signIn} />
+              {/* <Homepage user={this.state.username} /> */}
             </Route>
           </Switch>
         </Router>
