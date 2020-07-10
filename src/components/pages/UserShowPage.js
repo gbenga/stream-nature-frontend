@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EventCard from "../cards/EventCard";
+import EventForm from "../containers/EventForm";
 import API from "../../API";
 import {
   Header,
@@ -33,6 +34,9 @@ export default class UserShowPage extends Component {
   renderEventCards(events) {
     return events.map((event, idx) => <EventCard event={event} key={idx} />);
   }
+
+  // renderEventForm = () => { <EventForm /> }
+
 
   handleClickButton = () => {
     API.patchToUser(this.state.id).then((followerInfo) => {
@@ -89,6 +93,12 @@ export default class UserShowPage extends Component {
                 <Button.Content visible>Follow</Button.Content>
                 <Button.Content hidden>
                   <Icon name="handshake" />
+                </Button.Content>
+              </Button>
+              <Button onClick={this.renderEventForm} animated="vertical">
+                <Button.Content visible>Add an event</Button.Content> 
+                <Button.Content hidden>
+                  <Icon name="upload" />
                 </Button.Content>
               </Button>
             </Grid.Column>
