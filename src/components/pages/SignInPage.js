@@ -69,7 +69,7 @@ export default class SignInPage extends Component {
   render() {
     return (
       <div className="sign-in-page">
-        <Card className="sign-in-page">
+        <Card centered>
           <Card.Content extra>
             <Icon name="sign-in" />
           </Card.Content>
