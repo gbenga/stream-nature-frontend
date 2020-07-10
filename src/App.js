@@ -8,10 +8,10 @@ import UserShowPage from "./components/pages/UserShowPage";
 import Homepage from "./components/pages/Homepage";
 import SignInPage from "./components/pages/SignInPage";
 import SignUpPage from "./components/pages/SignUpPage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { Menu } from 'semantic-ui-react'
 
-export default class App extends Component {
+class App extends Component {
   state = {
     events: [],
     locations: [],
@@ -58,12 +58,12 @@ export default class App extends Component {
   signOut = () => {
     this.setState({ user: null });
     localStorage.removeItem("token");
+    this.props.history.push('/auth/sign-in')
   };
 
   render() {
     return (
       <>
-        <Router>
           <ul>
             {
               this.state.user
@@ -75,7 +75,7 @@ export default class App extends Component {
                   <Link to="/search">Search</Link>
               </Menu.Item>
                 <Menu.Item>
-                  <Link to="/">Profile</Link>
+                  <Link to={`/users/${this.state.user.id}`}>Profile</Link>
               </Menu.Item>
                 <Menu.Item>
                   <Link onClick={this.signOut}>Sign Out</Link>
@@ -107,9 +107,11 @@ export default class App extends Component {
             {/* <Route exact path="/auth">
               <AuthPage signOut={this.signOut} />
             </Route> */}
-            <Route exact path="/auth/sign-in">
-              <SignInPage signIn={this.signIn} />
-            </Route>
+            <Route 
+              exact 
+              path="/auth/sign-in"
+              render={ routerProps => <SignInPage {...routerProps} signIn={this.signIn} />}
+            />
             {/* may change lines 96 -102
             <Route exact path="/auth">
               <AuthPage checkLoginStatus={this.state.signedIn} signOut={this.signOut} />
@@ -135,8 +137,9 @@ export default class App extends Component {
               {/* <Homepage user={this.state.username} /> */}
             </Route>
           </Switch>
-        </Router>
       </>
     );
   }
 }
+
+export default withRouter(App)

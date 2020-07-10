@@ -50,6 +50,8 @@ export default class SignInPage extends Component {
         // handleError
       } else {
         this.props.signIn(jso.user, jso.token)
+        this.props.history.push(`/users/${jso.user.id}`)
+
       }
     })
     .catch((error) => console.log(error.message));
