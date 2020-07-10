@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import API from "../../API";
-import SignUpForm from '../containers/SignUpForm'
+import SignUpForm from "../containers/SignUpForm";
 import { Card, Icon } from "semantic-ui-react";
 
 export default class SignUpPage extends Component {
-  
-
   handleChangeName = (e) => {
     this.setState({
       newUser: { ...this.state.newUser, ...{ name: e.target.value } },
@@ -46,12 +44,12 @@ export default class SignUpPage extends Component {
   render() {
     return (
       <div className="sign-up-page">
-        <Card>
+        <Card centered>
           <Card.Content extra>
             <Icon name="edit" />
           </Card.Content>
           <Card.Content header="Create an Account" />
-          <SignUpForm handleSubmit={this.handleSubmit}/>
+          <SignUpForm handleSubmit={this.handleSubmit} />
         </Card>
       </div>
     );
