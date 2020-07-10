@@ -31,7 +31,7 @@ export default class App extends Component {
     );
     //If a user is logged in, meaning we have a JWT token for that user
     //Ask the backend to tell us who the user is
-    if (this.state.signedIn) {
+    if (this.state.signedIn && localStorage.token ) {
       // debugger
       // API.validate(localStorage.token)
       // .then(json => this.signIn(json.username, json.token))
