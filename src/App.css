@@ -52,6 +52,9 @@
 } */
 
 .sign-in-page{ 
-  padding: 70px 0;
+  text-align: center;
+}
+
+.sign-up-page{ 
   text-align: center;
 }
