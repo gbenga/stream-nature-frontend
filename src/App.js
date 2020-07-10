@@ -9,6 +9,7 @@ import Homepage from "./components/pages/Homepage";
 import SignInPage from "./components/pages/SignInPage";
 import SignUpPage from "./components/pages/SignUpPage";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Menu } from 'semantic-ui-react'
 
 export default class App extends Component {
   state = {
@@ -66,23 +67,28 @@ export default class App extends Component {
           <ul>
             {
               this.state.user
-              ? <>
-                <li>
+              ? <Menu>
+              <Menu.Item>
                   <Link to="/index">Index</Link>
-                </li>
-                <li>
+              </Menu.Item>
+              <Menu.Item>
                   <Link to="/search">Search</Link>
-                </li>
-                <li>
+              </Menu.Item>
+                <Menu.Item>
                   <Link to="/">Profile</Link>
-                </li>
-                <li>
+              </Menu.Item>
+                <Menu.Item>
                   <Link onClick={this.signOut}>Sign Out</Link>
-                </li>
-              </>
-              : <li>
+              </Menu.Item>
+                </Menu>
+              :  <Menu>
+              <Menu.Item>
                 <Link to="/auth/sign-up">Sign Up</Link>
-              </li>
+                </Menu.Item>
+                <Menu.Item>
+                <Link to="/auth/sign-in">Sign In</Link>
+                </Menu.Item>
+               </Menu>
             }
           </ul>
 
