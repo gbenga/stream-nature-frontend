@@ -1,7 +1,6 @@
 import React from "react";
-import { Form, Button } from "semantic-ui-react";
-
 import API from "../../API";
+import { Form, Button } from "semantic-ui-react";
 
 export default class SignUpForm extends React.Component {
   state = {
@@ -18,7 +17,15 @@ export default class SignUpForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    API.postToUsers(this.state).then((newUser) => {});
+    API.postToUsers(this.setDefaultUserData(this.state)).then((newUser) =>
+      console.log(newUser)
+    );
+  };
+
+  setDefaultUserData = (user) => {
+    user.followers = 0;
+    console.log(user);
+    return user;
   };
 
   render() {
