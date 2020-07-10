@@ -8,16 +8,44 @@ export default class SignUpPage extends Component {
   };
 
   signUpForm = () => {
-    return <Form className="new-user-form" onSubmit={this.handleSubmit}>
-    <Form.Field required>
-    <Form.Input onChange={this.handleChangeName} type="text" placeholder="Name" label="Name"/>
-    <Form.Input onChange={this.handleChangeAvatar} type="text" placeholder="Profile picture" label="Profile picture"/>
-    <Form.Input onChange={this.handleChangeUsername} type="text" placeholder="Username" label="Username"/>
-    <Form.Input onChange={this.handleChangePassword} type="password" placeholder="Password" label="Password"/>
-    <Button content='Sign-up' value="Sign-up"/> 
-    </Form.Field>
-   </Form>
-   }
+    return (
+      <Form className="new-user-form" onSubmit={this.handleSubmit}>
+        <Form.Field required>
+          <Form.Input
+            onChange={this.handleChangeName}
+            type="text"
+            placeholder="Name"
+            label="Name"
+          />
+          <Form.Input
+            onChange={this.handleChangeAvatar}
+            type="text"
+            placeholder="Profile picture"
+            label="Profile picture"
+          />
+          <Form.Input
+            onChange={this.handleChangeUsername}
+            type="text"
+            placeholder="Username"
+            label="Username"
+          />
+          <Form.Input
+            onChange={this.handleChangePassword}
+            type="password"
+            placeholder="Password"
+            label="Password"
+          />
+          <Form.Input
+            onChange={this.handleChangeBio}
+            type="text"
+            placeholder="Bio"
+            label="Bio"
+          />
+          <Button content="Sign-up" value="Sign-up" />
+        </Form.Field>
+      </Form>
+    );
+  };
 
   handleChangeName = (e) => {
     this.setState({
@@ -43,16 +71,16 @@ export default class SignUpPage extends Component {
     });
   };
 
-  // handleChangeBio = (e) => {
-  //   this.setState({
-  //     newUser: { ...this.state.newUser, ...{ bio: e.target.value } },
-  //   });
-  // };
+  handleChangeBio = (e) => {
+    this.setState({
+      newUser: { ...this.state.newUser, ...{ bio: e.target.value } },
+    });
+  };
 
   setDefaultUserData = (user) => {
     user.followers = 0;
-    user.bio = "";
-    console.log(user)
+    // user.bio = "";
+    console.log(user);
     return user;
   };
 
@@ -64,13 +92,13 @@ export default class SignUpPage extends Component {
   render() {
     return (
       <div className="sign-up-page">
-      <Card>
-       <Card.Content extra>
-      <Icon name='edit' />
-      </Card.Content>
-      <Card.Content header="Create an Account" />
-      <div> {this.signUpForm()}  </div>
-      </Card>
+        <Card>
+          <Card.Content extra>
+            <Icon name="edit" />
+          </Card.Content>
+          <Card.Content header="Create an Account" />
+          <div> {this.signUpForm()} </div>
+        </Card>
       </div>
     );
   }
