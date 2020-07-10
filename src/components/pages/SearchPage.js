@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SearchResultsContainer from "../containers/SearchResultsContainer";
+import { Form, Label } from "semantic-ui-react";
 
 export default class SearchPage extends Component {
   state = {
@@ -30,15 +31,18 @@ export default class SearchPage extends Component {
   render() {
     return (
       <>
-        This is the Search Page <br></br>
-        <label type="label" className="search-bar-label">
-          Search for events by name:
-        </label>
-        <input
-          type="text"
-          className="search-bar"
-          onChange={this.handleChange}
-        ></input>
+        <Form>
+          <Form.Field inline>
+            <Label basic color="blue" pointing="right">
+              Search for Events by Name:
+            </Label>
+            <input
+              type="text"
+              className="search-bar"
+              onChange={this.handleChange}
+            ></input>
+          </Form.Field>
+        </Form>
         <br></br>
         <SearchResultsContainer events={this.state.filteredEvents} />
       </>

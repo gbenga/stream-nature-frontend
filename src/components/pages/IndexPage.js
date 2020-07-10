@@ -5,8 +5,7 @@ import UsersContainer from "../containers/UsersContainer";
 export default class IndexPage extends Component {
   render() {
     return (
-      <div className="index-container">
-        this is the Index Container
+      <div className="index-page">
         <br></br>
         <LocationsContainer locations={this.props.locations} />
         <UsersContainer users={this.props.users} />

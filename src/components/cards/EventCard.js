@@ -29,7 +29,7 @@ export default class EventCard extends Component {
   render() {
     return (
       <Card
-        image={this.state.avatar}
+        // image={this.state.avatar}
         header={this.state.name}
         meta={this.state.time}
         meta={`${this.state.likes} likes`}

@@ -1,18 +1,28 @@
 import React, { Component } from "react";
 import UserCard from "../cards/UserCard";
+import { Grid, Divider, Header, Icon } from "semantic-ui-react";
 
 class UsersContainer extends Component {
   renderUserCards = () => {
     return this.props.users.map((user, index) => (
-      <UserCard key={index} user={user} />
+      <Grid.Column>
+        <UserCard key={index} user={user} />
+      </Grid.Column>
     ));
   };
 
   render() {
     return (
       <div className="users-container">
-        <h4> This is the UsersContainer </h4>
-        {this.renderUserCards()}
+        <Divider horizontal>
+          <Header as="h2">
+            <Icon name="user" />
+            Users
+          </Header>
+        </Divider>
+        <Grid container columns={3}>
+          {this.renderUserCards()}
+        </Grid>
       </div>
     );
   }
