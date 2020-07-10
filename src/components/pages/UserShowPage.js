@@ -10,6 +10,7 @@ import {
   Divider,
   Grid,
   Segment,
+  Label,
 } from "semantic-ui-react";
 
 export default class UserShowPage extends Component {
@@ -57,7 +58,11 @@ export default class UserShowPage extends Component {
                     alt={`avatar for ${this.state.name}`}
                     size="small"
                     verticalAlign="top"
+                    fluid
                   />
+                  <Label basic color="blue" pointing>
+                    Hover to read my bio!
+                  </Label>
                 </Reveal.Content>
                 <Reveal.Content hidden>
                   <Header as="h4" icon textAlign="center">
@@ -75,7 +80,12 @@ export default class UserShowPage extends Component {
                   {this.state.followers} Followers
                 </Header.Content>
               </Header>
-              <Button onClick={this.handleClickButton} animated="vertical">
+              <Button
+                onClick={this.handleClickButton}
+                animated="vertical"
+                color="teal"
+                fluid
+              >
                 <Button.Content visible>Follow</Button.Content>
                 <Button.Content hidden>
                   <Icon name="handshake" />
@@ -84,7 +94,7 @@ export default class UserShowPage extends Component {
             </Grid.Column>
           </Grid>
 
-          <Divider vertical>And</Divider>
+          <Divider vertical></Divider>
         </Segment>
 
         <Header as="h4" icon textAlign="center">
