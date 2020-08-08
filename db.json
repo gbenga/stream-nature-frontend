@@ -1,0 +1,104 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "event 1 :sunset",
+      "time": "02:00",
+      "locationId": 1,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "event 2: sunrise",
+      "time": "04:30",
+      "locationId": 1,
+      "userId": 3
+    },
+    {
+      "id": 3,
+      "name": "event 3: volcanic eruption",
+      "time": "14:15",
+      "locationId": 2,
+      "userId": 2
+    },
+    {
+      "id": 4,
+      "name": "event 4: waterfall",
+      "time": "20:00",
+      "locationId": 3,
+      "userId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "gbenga",
+      "avatar": "https://www.out.com/sites/out.com/files/styles/vertical_gallery_desktop_1x/public/hbomax_020620_legend_zd_00383.jpg?itok=6kuTao9J&timestamp=1589587361",
+      "bio": "that guy",
+      "likes": 0,
+      "followers": 368943
+    },
+    {
+      "id": 2,
+      "username": "dorothy",
+      "avatar": "https://vignette.wikia.nocookie.net/p__/images/9/9f/Lana_kane.jpg/revision/latest/scale-to-width-down/340?cb=20130325021411&path-prefix=protagonist",
+      "bio": "that girl",
+      "likes": 2,
+      "followers": 28763
+    },
+    {
+      "id": 3,
+      "username": "dan",
+      "avatar": "https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png",
+      "bio": "Check this out guys!",
+      "likes": 0,
+      "followers": 3487492
+    },
+    {
+      "id": 4,
+      "username": "anderson",
+      "avatar": "https://www.vippng.com/png/detail/416-4161690_empty-profile-picture-blank-avatar-image-circle.png",
+      "bio": "no longer that guy",
+      "likes": 3,
+      "followers": 173843
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "country": "UK",
+      "city": "Bristol",
+      "longitude": "51°27′N ",
+      "latitude": "2°35′W",
+      "avatar": "",
+      "bio": "South-West UK"
+    },
+    {
+      "id": 2,
+      "country": "UK",
+      "city": "Birmingham",
+      "longitude": "52.4862° N",
+      "latitude": "1.8904° W",
+      "avatar": "",
+      "bio": "Midlands"
+    },
+    {
+      "id": 3,
+      "country": "UK",
+      "city": "Exeter",
+      "longitude": "50.7184° N",
+      "latitude": "3.5339° W",
+      "avatar": "",
+      "bio": "#BleedGreen"
+    },
+    {
+      "id": 4,
+      "country": "UK",
+      "city": "London",
+      "longitude": "51.5074° N",
+      "latitude": "0.1278° W",
+      "avatar": "",
+      "bio": "The city that never sleeps"
+    }
+  ]
+}
