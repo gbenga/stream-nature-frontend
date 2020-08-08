@@ -35,7 +35,7 @@ export default class LocationShowPage extends Component {
             {this.state.location.city}, {this.state.location.country}
           </Header.Content>
         </Header>
-        <div>Image to be uploaded</div>
+        {/* <div>Image to be uploaded</div> */}
         {/* <Image
           centered
           size="large"
@@ -44,10 +44,10 @@ export default class LocationShowPage extends Component {
         <Header as="h2" icon textAlign="center">
           {this.state.location.bio}
         </Header>
-        <Header as="h3" icon textAlign="center">
+        {/* <Header as="h3" icon textAlign="center">
           Lat: {this.state.location.latitude}, Lon:{" "}
           {this.state.location.latitude}
-        </Header>
+        </Header> */}
         <Header as="h3" dividing>
           There are currently {this.state.location.events.length} events for:{" "}
           {this.state.location.city}:

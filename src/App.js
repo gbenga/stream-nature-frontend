@@ -69,6 +69,9 @@ class App extends Component {
               <Menu.Item>
                 <Link to="/">Home</Link>
               </Menu.Item>
+              {/* <Menu.Item>
+                <Link to="/auth/sign-in">Sign In</Link>
+              </Menu.Item> */}
               <Menu.Item>
                 <Link to="/index">Index</Link>
               </Menu.Item>
@@ -78,20 +81,20 @@ class App extends Component {
               <Menu.Item>
                 <Link to={`/users/${this.state.user.id}`}>Profile</Link>
               </Menu.Item>
-              <Menu.Item>
+              {/* <Menu.Item>
                 <Link to="/auth/sign-in" onClick={this.signOut}>
                   Sign Out
                 </Link>
-              </Menu.Item>
+              </Menu.Item> */}
             </Menu>
           ) : (
             <Menu>
-              <Menu.Item>
+              {/* <Menu.Item>
                 <Link to="/auth/sign-up">Sign Up</Link>
               </Menu.Item>
               <Menu.Item>
                 <Link to="/auth/sign-in">Sign In</Link>
-              </Menu.Item>
+              </Menu.Item> */}
             </Menu>
           )}
         </ul>

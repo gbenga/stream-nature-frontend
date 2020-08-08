@@ -12,7 +12,7 @@ export default class Homepage extends Component {
         ) : (
           <div>
             <div>
-              <Header as="h2">
+              {/* <Header as="h2">
                 Welcome to <strong>Stream Nature</strong>
                 <div>
                   {" "}
@@ -20,8 +20,9 @@ export default class Homepage extends Component {
                   <Link to="/auth/sign-in">Sign in</Link>or
                   <Link to="/auth/sign-up">Sign up</Link>
                 </div>
-              </Header>
+              </Header> */}
             </div>
+            <Container>-</Container>
             <Container>
               <Logo />
             </Container>
