@@ -1,6 +1,6 @@
 # Stream Nature
 
-Description description
+Stream Nature provides individuals with access to the world's natural phenomena. United through a common interest in nature, users can view and broadcast their own favourite nature spots.
 
 ### Table of Contents
 
@@ -61,7 +61,6 @@ $ npm install
 
 Launch
 $ npm start
-
 ```
 
 NB: When asked _"Would you like to run the app on another port instead? (Y/n)"_ respond with _"y"_
