@@ -44,7 +44,7 @@ Stream Nature allows users to see natural phenomena from all around the world. U
 
 ## **Installation**
 
-To use Stream Nature locally, you will need Git and Node Package Manager. You will also need the backend to be running, which can be found here. After this, you will only need to clone this repo and launch the frontend to start.
+To use Stream Nature locally, you will need Git and Node Package Manager. You will also need the backend to be running, which can be found [here](https://github.com/gbenga/stream-nature-backend). After this, you will only need to clone this repo and launch the frontend to start.
 
 ```
 Clone this repository
