@@ -62,7 +62,7 @@ $ npm install
 # Launch
 $ npm start
 
-# NB: When asked /"Would you like to run the app on another port instead? (Y/n)"/ respond with /"y"/
+# NB: When asked *"Would you like to run the app on another port instead? (Y/n)"* respond with *"y"*
 ```
 
 ## **License**
