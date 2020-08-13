@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import EventCard from "../cards/EventCard";
-import EventForm from "../containers/EventForm";
 import API from "../../API";
 import {
   Header,
@@ -37,7 +36,6 @@ export default class UserShowPage extends Component {
 
   // renderEventForm = () => { <EventForm /> }
 
-
   handleClickButton = () => {
     API.patchToUser(this.state.id).then((followerInfo) => {
       this.setState({
@@ -62,7 +60,6 @@ export default class UserShowPage extends Component {
                     alt={`avatar for ${this.state.name}`}
                     size="small"
                     verticalAlign="top"
-                    fluid
                   />
                   <Label basic color="blue" pointing>
                     Hover to read my bio!
@@ -88,7 +85,6 @@ export default class UserShowPage extends Component {
                 onClick={this.handleClickButton}
                 animated="vertical"
                 color="teal"
-                fluid
               >
                 <Button.Content visible>Follow</Button.Content>
                 <Button.Content hidden>
@@ -96,7 +92,7 @@ export default class UserShowPage extends Component {
                 </Button.Content>
               </Button>
               <Button onClick={this.renderEventForm} animated="vertical">
-                <Button.Content visible>Add an event</Button.Content> 
+                <Button.Content visible>Add an event</Button.Content>
                 <Button.Content hidden>
                   <Icon name="upload" />
                 </Button.Content>

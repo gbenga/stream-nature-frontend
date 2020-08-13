@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import API from "../../API";
 import SignUpForm from "../containers/SignUpForm";
 import { Card, Icon } from "semantic-ui-react";
 

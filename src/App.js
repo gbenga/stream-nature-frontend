@@ -64,39 +64,41 @@ class App extends Component {
     return (
       <>
         <ul>
-          {this.state.user ? (
-            <Menu>
-              <Menu.Item>
-                <Link to="/">Home</Link>
-              </Menu.Item>
-              {/* <Menu.Item>
-                <Link to="/auth/sign-in">Sign In</Link>
-              </Menu.Item> */}
-              <Menu.Item>
-                <Link to="/index">Index</Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link to="/search">Search</Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link to={`/users/${this.state.user.id}`}>Profile</Link>
-              </Menu.Item>
-              {/* <Menu.Item>
-                <Link to="/auth/sign-in" onClick={this.signOut}>
-                  Sign Out
-                </Link>
-              </Menu.Item> */}
-            </Menu>
-          ) : (
-            <Menu>
-              {/* <Menu.Item>
-                <Link to="/auth/sign-up">Sign Up</Link>
-              </Menu.Item>
-              <Menu.Item>
-                <Link to="/auth/sign-in">Sign In</Link>
-              </Menu.Item> */}
-            </Menu>
-          )}
+          <Menu>
+            {this.state.user ? (
+              <>
+                <Menu.Item>
+                  <Link to="/">Home</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/auth/sign-in">Sign In</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/index">Index</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/search">Search</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to={`/users/${this.state.user.id}`}>Profile</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/auth/sign-in" onClick={this.signOut}>
+                    Sign Out
+                  </Link>
+                </Menu.Item>
+              </>
+            ) : (
+              <>
+                <Menu.Item>
+                  <Link to="/auth/sign-up">Sign Up</Link>
+                </Menu.Item>
+                <Menu.Item>
+                  <Link to="/auth/sign-in">Sign In</Link>
+                </Menu.Item>
+              </>
+            )}
+          </Menu>
         </ul>
 
         <hr></hr>

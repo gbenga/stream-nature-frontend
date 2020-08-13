@@ -1,7 +1,7 @@
 const eventsURL = "http://localhost:3000/api/v1/events";
 const usersURL = "http://localhost:3000/api/v1/users";
 const locationsURL = "http://localhost:3000/api/v1/locations";
-const validateURL = "http://localhost:3000/api/v1/validate";
+// const validateURL = "http://localhost:3000/api/v1/validate";
 
 function fetchEvents() {
   return fetch(eventsURL)

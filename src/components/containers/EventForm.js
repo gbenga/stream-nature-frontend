@@ -1,6 +1,5 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { Form, Button } from "semantic-ui-react";
-import API from "../../API";
 
 export default class EventForm extends Component {
   state = {

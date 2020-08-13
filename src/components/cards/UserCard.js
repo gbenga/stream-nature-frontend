@@ -9,10 +9,10 @@ const CardExampleCardProps = (props) => (
     meta={`@${props.user.username}`}
     description={props.user.bio}
     extra={
-      <a>
+      <>
         <Icon name="user" />
         <Link to={`/users/${props.user.id}`}>Discover More</Link>
-      </a>
+      </>
     }
   />
 );

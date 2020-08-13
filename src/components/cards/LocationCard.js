@@ -9,10 +9,10 @@ const CardExampleCardProps = (props) => (
     meta={props.location.country}
     description={props.location.bio}
     extra={
-      <a>
+      <>
         <Icon name="map pin" />
         <Link to={`/locations/${props.location.id}`}>Discover More</Link>
-      </a>
+      </>
     }
   />
 );

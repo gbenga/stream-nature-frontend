@@ -31,15 +31,12 @@ export default class EventCard extends Component {
       <Card
         // image={this.state.avatar}
         header={this.state.name}
-        meta={this.state.time}
         meta={`${this.state.likes} likes`}
         description={`Live from: ${this.state.location.city},${this.state.location.country}`}
         extra={
           <>
-            <a>
-              <Icon name="user" />
-              Hosted by: {this.state.user.name}
-            </a>
+            <Icon name="user" />
+            Hosted by: {this.state.user.name}
             <Button onClick={this.handleClickButton} animated="vertical">
               <Button.Content hidden>Like</Button.Content>
               <Button.Content visible>
