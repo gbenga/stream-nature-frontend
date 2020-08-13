@@ -56,8 +56,13 @@ $ cd stream-nature-frontend
 # Open in your text editor
 $ code .
 
+# Install dependencies
+$ npm install
+
 # Launch
 $ npm start
+
+# NB: When asked /"Would you like to run the app on another port instead? (Y/n)"/ respond with /"y"/
 ```
 
 ## **License**
