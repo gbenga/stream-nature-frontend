@@ -1,3 +1,5 @@
+NB: The Rails backend for this project can be found [here](https://github.com/gbenga/stream-nature-backend)
+
 # Stream Nature
 
 Stream Nature provides individuals with access to the world's natural phenomena. United through a common interest in nature, users can view and broadcast their own favourite nature spots.
