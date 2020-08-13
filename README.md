@@ -11,6 +11,7 @@ Stream Nature provides individuals with access to the world's natural phenomena.
 - [Technologies](#technologies)
 - [Usage and Features](#usage-and-features)
 - [Installation](#installation)
+- [License](#license)
 
 ## **Screenshots**
 
@@ -28,7 +29,7 @@ Stream Nature is also live, try it for yourself: [here](https://stream-nature.ne
 
 ## Technologies
 
-This project is created with:
+This project was created with:
 
 - React.js
 
@@ -46,7 +47,7 @@ Stream Nature allows users to see natural phenomena from all around the world. U
 
 ## **Installation**
 
-To use Stream Nature locally, you will need Git and Node Package Manager. You will also need the backend to be running, which can be found [here](https://github.com/gbenga/stream-nature-backend). After this, you will only need to clone this repo and launch the frontend to start.
+To use Stream Nature locally, you will need Git and Node Package Manager installed. You will also need the backend to be running, which can be found [here](https://github.com/gbenga/stream-nature-backend). After this, you will only need to clone this repo and launch the frontend to start.
 
 ```
 Clone this repository
