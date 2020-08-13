@@ -1,7 +1,8 @@
-const eventsURL = "http://localhost:3000/api/v1/events";
-const usersURL = "http://localhost:3000/api/v1/users";
-const locationsURL = "http://localhost:3000/api/v1/locations";
-// const validateURL = "http://localhost:3000/api/v1/validate";
+const baseURL = "https://stream-nature.herokuapp.com/api/v1";
+const eventsURL = `${baseURL}/events`;
+const usersURL = `${baseURL}/users`;
+const locationsURL = `${baseURL}/locations`;
+const validateURL = `${baseURL}/validate`;
 
 function fetchEvents() {
   return fetch(eventsURL)
@@ -68,9 +69,8 @@ function getUserIdFromJwtToken(url, token) {
 }
 
 function validate() {
-  // debugger
   const configObject = { headers: { Authorization: localStorage.token } };
-  return fetch("http://localhost:3000/api/v1/validate", configObject)
+  return fetch(validateURL, configObject)
     .then((response) => response.json())
     .catch((error) => alert("Validating JWT token failed"));
 
