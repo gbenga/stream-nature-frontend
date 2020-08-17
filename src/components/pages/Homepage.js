@@ -24,6 +24,9 @@ export default class Homepage extends Component {
             <Container>-</Container>
             <Container>
               <Logo />
+              <a href={"https://github.com/gbenga/stream-nature-frontend"}>
+                GitHub
+              </a>
             </Container>
           </div>
         )}
