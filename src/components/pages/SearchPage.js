@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 import SearchResultsContainer from "../containers/SearchResultsContainer";
 import { Form, Label } from "semantic-ui-react";
+import API from "../../API";
 
 export default class SearchPage extends Component {
   state = {
+    events: [],
     searchTerm: "",
-    filteredEvents: [],
   };
 
   componentDidMount() {
-    this.setState({ filteredEvents: this.props.events });
+    API.fetchEvents().then(
+      (array) => console.log(array)
+      // this.setState({ events: array })
+    );
   }
 
   updateSearchTerm = (e) => {
@@ -17,15 +21,10 @@ export default class SearchPage extends Component {
   };
 
   filterEvents = () => {
-    return this.props.events.filter((e) =>
-      e.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-    );
-    // this.setState({ filteredEvents: ev });
-  };
-
-  handleChange = (e) => {
-    this.updateSearchTerm(e);
-    // this.filterEvents(this.props.events);
+    // return this.state.events.filter((e) =>
+    //   e.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    // );
+    return this.state.events;
   };
 
   render() {
@@ -39,12 +38,13 @@ export default class SearchPage extends Component {
             <input
               type="text"
               className="search-bar"
-              onChange={this.handleChange}
+              onChange={this.updateSearchTerm}
+              placeholder="Search events by name..."
             ></input>
           </Form.Field>
         </Form>
         <br></br>
-        <SearchResultsContainer events={this.filterEvents()} />
+        <SearchResultsContainer filteredEvents={this.state.events} />
       </>
     );
   }

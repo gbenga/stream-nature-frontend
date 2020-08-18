@@ -22,9 +22,6 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    // API.fetchEvents().then((array) =>
-    //   this.setState({ events: [...this.state.events, ...array] })
-    // );
     // API.fetchLocations().then((array) =>
     //   this.setState({ locations: [...this.state.locations, ...array] })
     // );

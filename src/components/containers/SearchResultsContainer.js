@@ -3,8 +3,8 @@ import EventCard from "../cards/EventCard";
 import { Grid, Divider, Header, Icon } from "semantic-ui-react";
 
 export default class SearchResultsContainer extends Component {
-  renderEventCards(props) {
-    return props.events.map((event) => (
+  renderEventCards() {
+    return this.props.filteredEvents.map((event) => (
       <Grid.Column>
         <EventCard event={event} key={event.id} />
       </Grid.Column>
@@ -21,7 +21,7 @@ export default class SearchResultsContainer extends Component {
           </Header>
         </Divider>
         <Grid container columns={3}>
-          {this.renderEventCards(this.props)}
+          {this.renderEventCards()}
         </Grid>
       </div>
     );
