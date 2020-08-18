@@ -1,32 +1,12 @@
 import React, { Component } from "react";
 import { Card, Icon, Form, Button } from "semantic-ui-react";
+import signInForm from "../forms/SignInForm";
+import SignInForm from "../forms/SignInForm";
 
 export default class SignInPage extends Component {
   state = {
     username: "",
     password: "",
-  };
-
-  signInForm = () => {
-    return (
-      <Form className="sign-in-form" onSubmit={this.handleSubmit}>
-        <Form.Field required>
-          <Form.Input
-            onChange={this.handleUsernameChange}
-            type="text"
-            placeholder="Username"
-            label="Username"
-          />
-          <Form.Input
-            onChange={this.handlePasswordChange}
-            type="password"
-            placeholder="Password"
-            label="Password"
-          />
-          <Button content="Sign-in" value="Sign-in" />
-        </Form.Field>
-      </Form>
-    );
   };
 
   handleUsernameChange = (event) => {
@@ -74,7 +54,7 @@ export default class SignInPage extends Component {
             <Icon name="sign-in" />
           </Card.Content>
           <Card.Content header="Enter Your log-in details" />
-          <div> {this.signInForm()} </div>
+          <SignInForm />
         </Card>
       </div>
     );

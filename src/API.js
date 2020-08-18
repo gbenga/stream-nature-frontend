@@ -1,8 +1,10 @@
-// const baseURL = "http://localhost:3000/api/v1";
-const baseURL = "https://stream-nature.herokuapp.com/api/v1";
+const baseURL = "http://localhost:3000/api/v1";
+// const baseURL = "https://stream-nature.herokuapp.com/api/v1";
 const eventsURL = `${baseURL}/events`;
 const usersURL = `${baseURL}/users`;
 const locationsURL = `${baseURL}/locations`;
+
+const sign_inURL = `${baseURL}/sign-in`;
 const validateURL = `${baseURL}/validate`;
 
 function fetchEvents() {
@@ -64,9 +66,23 @@ function fetchEvent(eventId) {
 }
 
 // Auth
-function getUserIdFromJwtToken(url, token) {
-  const configObject = { headers: { Authorization: token } };
-  return fetch(url, configObject);
+// function getUserIdFromJwtToken(url, token) {
+//   const configObject = { headers: { Authorization: token } };
+//   return fetch(url, configObject);
+// }
+function signIn(signInData) {
+  const configObject = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(signInData),
+  };
+
+  return fetch(sign_inURL, configObject)
+    .then((resp) => resp.json())
+    .catch((err) => alert(`signing this user in did not work. Error: ${err}`));
 }
 
 function validate() {
@@ -90,6 +106,6 @@ export default {
   patchToUser,
   fetchEvent,
   patchToEvent,
-  getUserIdFromJwtToken,
+  signIn,
   validate,
 };
