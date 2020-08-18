@@ -66,10 +66,6 @@ function fetchEvent(eventId) {
 }
 
 // Auth
-// function getUserIdFromJwtToken(url, token) {
-//   const configObject = { headers: { Authorization: token } };
-//   return fetch(url, configObject);
-// }
 function signIn(signInData) {
   const configObject = {
     method: "POST",
@@ -85,15 +81,11 @@ function signIn(signInData) {
     .catch((err) => alert(`signing this user in did not work. Error: ${err}`));
 }
 
-function validate() {
-  const configObject = { headers: { Authorization: localStorage.token } };
+function validate(token) {
+  const configObject = { headers: { Authorization: token } };
   return fetch(validateURL, configObject)
-    .then((response) => response.json())
-    .catch((error) => alert("Validating JWT token failed"));
-
-  // return getUserIdFromJwtToken(validateURL, token).then((response) =>
-  //   response.json()
-  // );
+    .then((resp) => resp.json())
+    .catch((err) => alert(`validating this user did not work. Error: ${err}`));
 }
 
 export default {

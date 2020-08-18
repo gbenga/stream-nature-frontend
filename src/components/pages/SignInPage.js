@@ -11,7 +11,7 @@ export default class SignInPage extends Component {
             <Icon name="sign-in" />
           </Card.Content>
           <Card.Content header="Enter Your log-in details" />
-          <SignInForm />
+          <SignInForm signIn={this.props.signIn} />
         </Card>
       </div>
     );

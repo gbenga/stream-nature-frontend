@@ -18,7 +18,6 @@ export default class SignInForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.sendSignInDataToRails();
     API.signIn(this.state)
       .then((json) => this.props.signIn(json.user, json.token))
       .then(
