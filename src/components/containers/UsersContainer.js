@@ -5,8 +5,8 @@ import { Grid, Divider, Header, Icon } from "semantic-ui-react";
 class UsersContainer extends Component {
   renderUserCards = () => {
     return this.props.users.map((user, index) => (
-      <Grid.Column>
-        <UserCard key={index} user={user} />
+      <Grid.Column key={index}>
+        <UserCard user={user} />
       </Grid.Column>
     ));
   };

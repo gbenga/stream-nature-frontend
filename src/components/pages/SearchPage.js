@@ -10,10 +10,7 @@ export default class SearchPage extends Component {
   };
 
   componentDidMount() {
-    API.fetchEvents().then(
-      (array) => console.log(array)
-      // this.setState({ events: array })
-    );
+    API.fetchEvents().then((array) => this.setState({ events: array }));
   }
 
   updateSearchTerm = (e) => {
@@ -21,10 +18,9 @@ export default class SearchPage extends Component {
   };
 
   filterEvents = () => {
-    // return this.state.events.filter((e) =>
-    //   e.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-    // );
-    return this.state.events;
+    return this.state.events.filter((e) =>
+      e.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    );
   };
 
   render() {
@@ -44,7 +40,7 @@ export default class SearchPage extends Component {
           </Form.Field>
         </Form>
         <br></br>
-        <SearchResultsContainer filteredEvents={this.state.events} />
+        <SearchResultsContainer filteredEvents={this.filterEvents()} />
       </>
     );
   }

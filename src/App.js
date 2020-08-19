@@ -22,13 +22,6 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    // API.fetchLocations().then((array) =>
-    //   this.setState({ locations: [...this.state.locations, ...array] })
-    // );
-    // API.fetchUsers().then((array) =>
-    //   this.setState({ users: [...this.state.users, ...array] })
-    // );
-
     if (localStorage.token) {
       const jso = await API.validate(localStorage.token);
       this.signIn(jso.user, jso.token);
