@@ -12,7 +12,7 @@ export default class EventCard extends Component {
     user: {},
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     API.fetchEvent(this.props.event.id).then((eventObj) =>
       this.setState(eventObj)
     );
@@ -29,7 +29,6 @@ export default class EventCard extends Component {
   render() {
     return (
       <Card
-        // image={this.state.avatar}
         header={this.state.name}
         meta={`${this.state.likes} likes`}
         description={`Live from: ${this.state.location.city},${this.state.location.country}`}

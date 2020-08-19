@@ -2,15 +2,19 @@ import React, { Component } from "react";
 import SearchResultsContainer from "../containers/SearchResultsContainer";
 import { Form, Label } from "semantic-ui-react";
 import API from "../../API";
+import LoadingPage from "./LoadingPage";
 
 export default class SearchPage extends Component {
   state = {
     events: [],
     searchTerm: "",
+    isLoading: true,
   };
 
-  componentDidMount() {
-    API.fetchEvents().then((array) => this.setState({ events: array }));
+  async componentDidMount() {
+    await API.fetchEvents()
+      .then((array) => this.setState({ events: array }))
+      .then(this.setState({ isLoading: false }));
   }
 
   updateSearchTerm = (e) => {
@@ -24,6 +28,8 @@ export default class SearchPage extends Component {
   };
 
   render() {
+    if (this.state.isLoading) return <LoadingPage />;
+
     return (
       <>
         <Form>

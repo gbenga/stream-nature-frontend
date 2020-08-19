@@ -8,17 +8,16 @@ import UserShowPage from "./components/pages/UserShowPage";
 import Homepage from "./components/pages/Homepage";
 import SignInPage from "./components/pages/SignInPage";
 import SignUpPage from "./components/pages/SignUpPage";
+import ProfilePage from "./components/pages/ProfilePage";
+import LoadingPage from "./components/pages/LoadingPage";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
 import { Menu, Button } from "semantic-ui-react";
 
 class App extends Component {
   state = {
-    events: [],
-    locations: [],
-    users: [],
     user: null,
-    signedIn: false,
     isLoading: true,
+    redirect: "/",
   };
 
   async componentDidMount() {
@@ -40,6 +39,7 @@ class App extends Component {
   };
 
   render() {
+    if (this.state.isLoading) return <LoadingPage />;
     return (
       <>
         <Menu>
@@ -55,7 +55,7 @@ class App extends Component {
                 <Link to="/search">Search</Link>
               </Menu.Item>
               <Menu.Item>
-                <Link to={`/users/${this.state.user.id}`}>Profile</Link>
+                <Link to="/profile">Profile</Link>
               </Menu.Item>
               <Menu.Item>
                 <Button onClick={this.signOut}>Sign Out</Button>
@@ -76,19 +76,7 @@ class App extends Component {
         <hr></hr>
         <Switch>
           <Route exact path="/index">
-            <IndexPage
-              locations={this.state.locations}
-              users={this.state.users}
-            />
-          </Route>
-          <Route exact path="/search">
-            <SearchPage events={this.state.events} />
-          </Route>
-          <Route exact path="/sign-in">
-            <SignInPage signIn={this.signIn} />
-          </Route>
-          <Route exact path="/auth/sign-up">
-            <SignUpPage />
+            <IndexPage />
           </Route>
           <Route
             exact
@@ -100,6 +88,30 @@ class App extends Component {
             path="/users/:userId"
             render={(routerProps) => <UserShowPage {...routerProps} />}
           />
+          {/* <Route exact path="/profile">
+            <ProfilePage user={this.state.user} />
+          </Route> */}
+          <Route
+            exact
+            path="/profile"
+            render={(routerProps) => (
+              <ProfilePage
+                {...routerProps}
+                user={this.state.user}
+                redirect={this.state.redirect}
+                signOut={this.signOut}
+              />
+            )}
+          />
+          <Route exact path="/search">
+            <SearchPage />
+          </Route>
+          <Route exact path="/sign-in">
+            <SignInPage signIn={this.signIn} />
+          </Route>
+          <Route exact path="/sign-up">
+            <SignUpPage />
+          </Route>
           <Route exact path="/">
             <Homepage user={this.state.user} />
           </Route>

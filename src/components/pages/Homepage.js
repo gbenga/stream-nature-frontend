@@ -6,14 +6,11 @@ export default class Homepage extends Component {
   render() {
     return (
       <div>
-        {this.props.username ? (
-          <h2> Welcome back {this.props.user.username} - how are you?</h2>
+        <Header as="h2">Stream Nature</Header>
+        {this.props.user ? (
+          <h2> Welcome back {this.props.user.name} - how are you?</h2>
         ) : null}
         <div>
-          <Header as="h2">
-            Stream Nature
-            <div></div>
-          </Header>
           <Container>-</Container>
           <Container>
             <Logo />

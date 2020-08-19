@@ -5,8 +5,8 @@ import { Grid, Divider, Header, Icon } from "semantic-ui-react";
 export default class LocationsContainer extends Component {
   renderLocationCards(props) {
     return props.locations.map((location, idx) => (
-      <Grid.Column>
-        <LocationCard location={location} key={idx} />
+      <Grid.Column key={idx}>
+        <LocationCard location={location} />
       </Grid.Column>
     ));
   }

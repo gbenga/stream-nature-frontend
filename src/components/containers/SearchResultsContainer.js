@@ -5,8 +5,8 @@ import { Grid, Divider, Header, Icon } from "semantic-ui-react";
 export default class SearchResultsContainer extends Component {
   renderEventCards() {
     return this.props.filteredEvents.map((event) => (
-      <Grid.Column>
-        <EventCard event={event} key={event.id} />
+      <Grid.Column key={event.id}>
+        <EventCard event={event} />
       </Grid.Column>
     ));
   }

@@ -1,5 +1,5 @@
-const baseURL = "http://localhost:3000/api/v1";
-// const baseURL = "https://stream-nature.herokuapp.com/api/v1";
+// const baseURL = "http://localhost:3000/api/v1";
+const baseURL = "https://stream-nature.herokuapp.com/api/v1";
 const eventsURL = `${baseURL}/events`;
 const usersURL = `${baseURL}/users`;
 const locationsURL = `${baseURL}/locations`;
