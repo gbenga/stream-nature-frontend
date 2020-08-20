@@ -15,10 +15,8 @@ Stream Nature provides individuals with access to the world's natural phenomena.
 
 ## **Screenshots**
 
-<---
 ![Flash Cards](/gifs/locations.gif)
 ![Homepage](/gifs/search.gif)
---->
 
 ## **Demo**
 

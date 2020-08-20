@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Message } from "semantic-ui-react";
 import API from "../../API";
 
 export default class SignInForm extends Component {
@@ -8,12 +8,8 @@ export default class SignInForm extends Component {
     password: "",
   };
 
-  handleUsernameChange = (e) => {
-    this.setState({ username: e.target.value });
-  };
-
-  handlePasswordChange = (e) => {
-    this.setState({ password: e.target.value });
+  handleInputChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = (e) => {
@@ -31,15 +27,18 @@ export default class SignInForm extends Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
+        <Message>Username: guest, Password: guest</Message>
         <Form.Field required>
           <Form.Input
-            onChange={this.handleUsernameChange}
+            name="username"
+            onChange={this.handleInputChange}
             type="text"
             placeholder="Username"
             label="Username"
           />
           <Form.Input
-            onChange={this.handlePasswordChange}
+            name="password"
+            onChange={this.handleInputChange}
             type="password"
             placeholder="Password"
             label="Password"

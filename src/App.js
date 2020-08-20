@@ -7,11 +7,10 @@ import LocationShowPage from "./components/pages/LocationShowPage";
 import UserShowPage from "./components/pages/UserShowPage";
 import Homepage from "./components/pages/Homepage";
 import SignInPage from "./components/pages/SignInPage";
-import SignUpPage from "./components/pages/SignUpPage";
 import ProfilePage from "./components/pages/ProfilePage";
 import LoadingPage from "./components/pages/LoadingPage";
 import { Switch, Route, Link, withRouter } from "react-router-dom";
-import { Menu, Button } from "semantic-ui-react";
+import { Menu } from "semantic-ui-react";
 
 class App extends Component {
   state = {
@@ -57,15 +56,9 @@ class App extends Component {
               <Menu.Item>
                 <Link to="/profile">Profile</Link>
               </Menu.Item>
-              <Menu.Item>
-                <Button onClick={this.signOut}>Sign Out</Button>
-              </Menu.Item>
             </>
           ) : (
             <>
-              <Menu.Item>
-                <Link to="/sign-up">Sign Up</Link>
-              </Menu.Item>
               <Menu.Item>
                 <Link to="/sign-in">Sign In</Link>
               </Menu.Item>
@@ -88,9 +81,6 @@ class App extends Component {
             path="/users/:userId"
             render={(routerProps) => <UserShowPage {...routerProps} />}
           />
-          {/* <Route exact path="/profile">
-            <ProfilePage user={this.state.user} />
-          </Route> */}
           <Route
             exact
             path="/profile"
@@ -108,9 +98,6 @@ class App extends Component {
           </Route>
           <Route exact path="/sign-in">
             <SignInPage signIn={this.signIn} />
-          </Route>
-          <Route exact path="/sign-up">
-            <SignUpPage />
           </Route>
           <Route exact path="/">
             <Homepage user={this.state.user} />
