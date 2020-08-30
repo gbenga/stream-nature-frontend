@@ -2,7 +2,7 @@ NB: The Rails backend for this project can be found [here](https://github.com/gb
 
 # Stream Nature
 
-Stream Nature provides individuals with access to the world's natural phenomena. United through a common interest in nature, users can view and broadcast their own favourite nature spots.
+Stream Nature gives individuals access to the world's natural phenomena. United through a common interest in nature, users can view and broadcast their own favourite nature spots.
 
 ### Table of Contents
 
