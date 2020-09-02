@@ -1,4 +1,4 @@
-NB: The Rails backend for this project can be found [here](https://github.com/gbenga/stream-nature-backend)
+NB: The Rails backend for this project can be found [here](https://github.com/gbenga/stream-nature-backend).
 
 # Stream Nature
 
