@@ -23,8 +23,6 @@ Stream Nature gives individuals access to the world's natural phenomena. United 
 
 A full video demo is available [here](https://www.loom.com/share/152e739c304940d3a2f9077470ec8ef3)
 
-Stream Nature is also live, try it for yourself: [here](https://stream-nature.netlify.app/)
-
 ## Technologies
 
 This project was created with:
